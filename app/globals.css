@@ -6,7 +6,7 @@
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -23,6 +23,69 @@ a {
 
 body {
   background-color: #f3f3f3;
+}
+
+#cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: difference;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 3s ease-out, opacity 3s ease-out;
+  -o-transition: visibility 3s ease-out, opacity 3s ease-out;
+  transition: visibility 3s ease-out, opacity 3s ease-out;
+}
+
+#custom-cursor {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background-color: pink;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out, -webkit-transform 0.3s ease-out;
+  transition: border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out, -webkit-transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out, border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out;
+  transition: transform 0.3s ease-out, border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out;
+  transition: transform 0.3s ease-out, border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out, -webkit-transform 0.3s ease-out;
+  visibility: hidden;
+
+}
+
+#custom-pointer {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: pink;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#custom-cursor.hovering {
+  height: 20px;
+  width: 20px;
+}
+
+#custom-cursor.hidden {
+  height: 0px;
+  width: 0px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#custom-cursor.visible,
+#cursor-container.visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 .navbarContainer {
@@ -96,18 +159,23 @@ p {
   height: 100dvh;
   width: 100%;
   opacity: 1;
-  transition: opacity 0.6s ease-in-out; /* Add transition property */
-  position: relative; /* Add position relative */
+  transition: opacity 0.6s ease-in-out;
+  /* Add transition property */
+  position: relative;
+  /* Add position relative */
   overflow: hidden;
 }
 
 .projectContainer.fade-out {
-  opacity: 0; /* Fade out */
-  pointer-events: none; /* Disable pointer events during transition */
+  opacity: 0;
+  /* Fade out */
+  pointer-events: none;
+  /* Disable pointer events during transition */
 }
 
 .projectDetailsContainer {
-  position: absolute; /* Change to absolute positioning */
+  position: absolute;
+  /* Change to absolute positioning */
   bottom: var(--padding-horiz);
   left: var(--padding-vert);
   display: flex;
@@ -115,11 +183,13 @@ p {
   mix-blend-mode: difference;
   z-index: 10;
   opacity: 1;
-  transition: opacity 0.6s ease-in-out; /* Add transition property */
+  transition: opacity 0.6s ease-in-out;
+  /* Add transition property */
 }
 
 .projectContainer.fade-out .projectDetailsContainer {
-  opacity: 0; /* Fade out details container */
+  opacity: 0;
+  /* Fade out details container */
 }
 
 .projectText {
@@ -191,12 +261,12 @@ p {
 
 .imgContainer {
   position: absolute;
-  bottom: 35%;
-  right: 2%;
+  bottom: 28%;
+  right: 4%;
 }
 
 .aboutImage {
-  width: 300px;
+  width: 450px;
   height: auto;
 }
 
@@ -211,5 +281,18 @@ p {
 
   .itemText {
     font-size: 0.95rem;
+  }
+
+  .itemContainer {
+    gap: 6rem;
+    left: 7%;
+  }
+
+  .aboutImage {
+    width: 250px;
+  }
+
+  .imgContainer {
+    bottom: 20%;
   }
 }

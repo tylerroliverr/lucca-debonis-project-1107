@@ -31,9 +31,9 @@ export default function Hero() {
                     prevIndex === projectsRef.current.length - 1 ? 0 : prevIndex + 1
                 );
                 setFade(false); // Trigger fade in effect after some time
-            }, 600); // Half of the transition time
+            }, 450); // Half of the transition time
 
-        }, 5000); // 10 seconds interval
+        }, 5000);
 
         return () => clearInterval(interval); // Clean up interval on unmount
     }, []);
