@@ -47,6 +47,9 @@ export default function About() {
                         ))}
                     </div>
                 </div>
+                <div className='imgContainer'>
+                        <img className='aboutImage' src="/lucca.png" />
+                    </div>
                 <div className='rightsContainer'>
                     <p>All Rights Reserved ©</p>
                 </div>

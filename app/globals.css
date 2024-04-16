@@ -145,7 +145,11 @@ p {
 .aboutContainer {
   height: 100dvh;
   width: 100%;
-  background-color: #d9d9d9;
+  background-color: #D9D9D9;
+  /* background-image: url(/about.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 .aboutBlurb {
@@ -183,4 +187,29 @@ p {
   bottom: var(--padding-horiz);
   left: var(--padding-vert);
   font-size: 1.3rem;
+}
+
+.imgContainer {
+  position: absolute;
+  bottom: 35%;
+  right: 2%;
+}
+
+.aboutImage {
+  width: 300px;
+  height: auto;
+}
+
+@media screen and (max-width: 1600px) {
+  .aboutBlurb {
+    font-size: 1.3rem;
+  }
+
+  .itemTitle {
+    font-size: 1rem;
+  }
+
+  .itemText {
+    font-size: 0.95rem;
+  }
 }
