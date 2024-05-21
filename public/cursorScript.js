@@ -2,7 +2,6 @@ const customCursor = document.getElementById('custom-cursor');
 const customPointer = document.getElementById('custom-pointer');
 const cursorContainer = document.getElementById('cursor-container');
 const link = document.querySelectorAll('.link');
-const images = document.querySelectorAll('.memories-feed-img');
 
 document.addEventListener('mousemove', function (e) {
     const x = e.clientX;
@@ -38,3 +37,40 @@ document.documentElement.addEventListener('mousemove', function handleMouseMove(
     customCursor.classList.add('visible');
     cursorContainer.classList.add('visible');
 }, { once: true });
+
+const playButton = document.querySelector('.play');
+const pauseButton = document.querySelector('.pause');
+const rewindButton = document.querySelector('.rewind');
+const skipButton = document.querySelector('.skip');
+
+rewindButton.addEventListener('click', function () {
+    rewindButton.classList.add('clicked');
+    setTimeout(function () {
+        rewindButton.classList.remove('clicked');
+    }, 100);
+});
+
+skipButton.addEventListener('click', function () {
+    skipButton.classList.add('clicked');
+    setTimeout(function () {
+        skipButton.classList.remove('clicked');
+    }, 100);
+});
+
+if (playButton) {
+    playButton.addEventListener('click', function () {
+        playButton.classList.add('clicked');
+        setTimeout(function () {
+            playButton.classList.remove('clicked');
+        }, 100);
+    });
+}
+
+if (pauseButton) {
+    pauseButton.addEventListener('click', function () {
+        pauseButton.classList.add('clicked');
+        setTimeout(function () {
+            pauseButton.classList.remove('clicked');
+        }, 100);
+    });
+}

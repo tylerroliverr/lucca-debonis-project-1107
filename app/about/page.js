@@ -21,6 +21,21 @@ export default function About() {
         fetchData(); // Fetch data initially
     }, []);
 
+    useEffect(() => {
+        const hoverImage = document.querySelector('.imgContainer');
+        const aboutDiv = document.querySelector('.aboutContainer');
+    
+        hoverImage.addEventListener('mouseenter', function() {
+            hoverImage.classList.add('fade-out');
+            aboutDiv.classList.add('expanded');
+        });
+    
+        hoverImage.addEventListener('mouseleave', function() {
+            hoverImage.classList.remove('fade-out');
+            aboutDiv.classList.remove('expanded');
+        });
+    }, []);
+
     return (
         <>
             <div className='aboutContainer'>
@@ -48,8 +63,8 @@ export default function About() {
                     </div>
                 </div>
                 <div className='imgContainer'>
-                        <img className='aboutImage' src="/lucca.png" />
-                    </div>
+                    <img className='aboutImage' src="/newlucca.png" />
+                </div>
                 <div className='rightsContainer'>
                     <p>All Rights Reserved ©</p>
                 </div>

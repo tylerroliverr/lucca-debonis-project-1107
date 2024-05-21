@@ -9,6 +9,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  cursor: none;
 }
 
 a {
@@ -88,6 +89,7 @@ body {
   opacity: 1;
 }
 
+/* NAV SECTION */
 .navbarContainer {
   position: fixed;
   top: var(--padding-horiz);
@@ -97,6 +99,8 @@ body {
   gap: 2px;
   z-index: 10;
   mix-blend-mode: difference;
+  text-align: right;
+  font-size: 1.2rem;
 }
 
 .navItem {
@@ -105,6 +109,67 @@ body {
   cursor: pointer;
 }
 
+/* MUSIC SECTION */
+.svgControl {
+  width: auto;
+  height: 13px;
+  transition: transform 0.25s ease-out;
+}
+
+.play,
+.pause {
+  height: 10.5px;
+}
+
+svg,
+g,
+path {
+  cursor: pointer;
+}
+
+.clicked {
+  transform: scale(0.5);
+}
+
+.controls {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  opacity: 0.5;
+  padding-top: 8px;
+  gap: 20px;
+}
+
+.progressBarContainer {
+  width: 85%;
+  height: 2px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0;
+  transition: width 0.1s ease;
+}
+
+.volumeControlContainer {
+  margin-top: 10px;
+}
+
+.volumeSlider {
+  width: 85%;
+}
+
+.soundOnContainer {
+  margin-top: 1.2rem;
+}
+
+/* LOGO SECTION */
 .logoContainer {
   position: fixed;
   top: var(--padding-horiz);
@@ -123,10 +188,7 @@ body {
   height: auto;
 }
 
-.soundOnContainer {
-  margin-top: 1.2rem;
-}
-
+/* FOOTER SECTION */
 .timeAndLocationContainer {
   position: fixed;
   display: flex;
@@ -155,6 +217,7 @@ p {
   font-weight: 500;
 }
 
+/* PROJECT SECTION */
 .projectContainer {
   height: 100dvh;
   width: 100%;
@@ -211,15 +274,33 @@ p {
   display: block;
 }
 
-
+/* ABOUT SECTION */
 .aboutContainer {
   height: 100dvh;
   width: 100%;
   background-color: #D9D9D9;
-  /* background-image: url(/about.jpg);
-  background-position: center;
+  transition: all 2s ease-out;
+}
+
+.aboutContainer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  background-image: url('/about.jpg');
   background-size: cover;
-  background-repeat: no-repeat; */
+  background-position: center;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.25s ease-out, height 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.aboutContainer.expanded::before {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
 }
 
 .aboutBlurb {
@@ -228,6 +309,8 @@ p {
   left: 26px;
   width: 80%;
   font-size: 1.8rem;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 .itemContainer {
@@ -241,6 +324,8 @@ p {
 .itemTitle {
   font-size: 1.5rem;
   margin-bottom: 18px;
+  mix-blend-mode: difference;
+  color: white;
 }
 
 .itemText {
@@ -257,12 +342,19 @@ p {
   bottom: var(--padding-horiz);
   left: var(--padding-vert);
   font-size: 1.3rem;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 .imgContainer {
   position: absolute;
   bottom: 28%;
-  right: 4%;
+  right: 0%;
+  transition: opacity 0.2s ease-out;
+}
+
+.imgContainer.fade-out {
+  opacity: 0;
 }
 
 .aboutImage {
