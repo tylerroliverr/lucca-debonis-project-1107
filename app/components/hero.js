@@ -1,12 +1,14 @@
 "use client";
 import getProjectData from "./getProjectData";
 import React, { useEffect, useState, useRef } from 'react';
+import Image from "next/image";
+import Script from "next/script";
 
 export default function Hero() {
 
     const [projects, setProjects] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [fade, setFade] = useState(false); // State for fade effect
+    const [fade, setFade] = useState(false);
     const projectsRef = useRef([]);
 
     useEffect(() => {
@@ -47,6 +49,7 @@ export default function Hero() {
 
     return (
         <>
+        <Script src="/linkHover.js"/>
             <div className="navigationButtons">
                 <div className="prevButton link" onClick={handlePrev}></div>
                 <div className="nextButton link" onClick={handleNext}></div>
@@ -56,7 +59,7 @@ export default function Hero() {
                     <>
                         <div className={`projectContainer ${fade ? 'fade-out' : ''}`}>
                             <div className="projectImageContainer">
-                                <img className="projectImg" src={projectsRef.current[currentIndex].imagePath} alt="Project" />
+                                <Image fill className="projectImg" src={projectsRef.current[currentIndex].imagePath} alt="Project" />
                             </div>
                             <div className={`projectDetailsContainer ${fade ? 'fade-out' : ''}`}>
                                 <p className="projectText">{projectsRef.current[currentIndex].projectName}</p>

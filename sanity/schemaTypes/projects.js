@@ -6,7 +6,7 @@ export const projects = {
       {
         title: "Project Order",
         name: "projectOrder",
-        type: "string"
+        type: "number"
       },
       {
         title: "Project Name",

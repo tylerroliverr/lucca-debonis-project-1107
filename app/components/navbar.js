@@ -17,7 +17,7 @@ export default function Navbar() {
                 <Link href={"/about"}>
                     <p className="navItem link">About</p>
                 </Link>
-                <Link href={"/"}>
+                <Link href={"/reel"}>
                     <p className="navItem link reel">1107® Reel</p>                
                 </Link>
                 <MusicPlayer tracks={tracks}/>

@@ -1,7 +1,6 @@
 const customCursor = document.getElementById('custom-cursor');
 const customPointer = document.getElementById('custom-pointer');
 const cursorContainer = document.getElementById('cursor-container');
-const link = document.querySelectorAll('.link');
 
 document.addEventListener('mousemove', function (e) {
     const x = e.clientX;
@@ -37,16 +36,6 @@ document.documentElement.addEventListener('mousemove', function handleMouseMove(
     customCursor.classList.add('visible');
     cursorContainer.classList.add('visible');
 }, { once: true });
-
-link.forEach(function (links) {
-    links.addEventListener('mouseover', function () {
-        customCursor.classList.add('hovering');
-    });
-
-    links.addEventListener('mouseout', function () {
-        customCursor.classList.remove('hovering');
-    });
-});
 
 const playButton = document.querySelector('.play');
 const pauseButton = document.querySelector('.pause');

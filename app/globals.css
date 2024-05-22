@@ -50,7 +50,7 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 100%;
-  background-color: pink;
+  background-color: rgb(255, 255, 255);
   z-index: 2;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -61,24 +61,30 @@ body {
   transition: transform 0.3s ease-out, border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out;
   transition: transform 0.3s ease-out, border-radius 0.4s ease-out, height 0.4s ease-out, width 0.4s ease-out, background-color 0.4s ease-out, opacity 1s ease-out, -webkit-transform 0.3s ease-out;
   visibility: hidden;
-
 }
 
 #custom-pointer {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 100%;
-  background-color: pink;
-  z-index: 1;
+  background-color: rgb(255, 255, 255);
+  z-index: 4;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  transition: border-radius 0.4s ease-out;
+  -o-transition: border-radius 0.4s ease-out;
+  mix-blend-mode: difference;
 }
 
 #custom-cursor.hovering {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
+}
+
+#custom-pointer.hovering {
+  border-radius: 0%;
 }
 
 #custom-cursor.hidden {
@@ -288,6 +294,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .projectImg {
@@ -301,7 +308,7 @@ p {
 .aboutContainer {
   height: 100dvh;
   width: 100%;
-  background-color: #D9D9D9;
+  background-color: #3C3C3C;
   transition: all 2s ease-out;
 }
 
@@ -332,8 +339,7 @@ p {
   left: 26px;
   width: 80%;
   font-size: 1.8rem;
-  color: white;
-  mix-blend-mode: difference;
+  color: #676767;
 }
 
 .itemContainer {
@@ -347,17 +353,21 @@ p {
 .itemTitle {
   font-size: 1.5rem;
   margin-bottom: 18px;
-  mix-blend-mode: difference;
-  color: white;
+  color: #676767;
 }
 
 .itemText {
   font-size: 1.2rem;
-  color: #565656;
+  color: white;
+  padding-bottom: 6px;
+}
+
+.awardItem {
+  padding-bottom: 28px;
 }
 
 .pop {
-  color: #565656;
+  color: white;
 }
 
 .rightsContainer {
@@ -383,6 +393,19 @@ p {
 .aboutImage {
   width: 450px;
   height: auto;
+}
+
+.awardsContainer {
+  width: 30%;
+}
+
+/* REEL SECTION */
+.playReel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
 }
 
 @media screen and (max-width: 1600px) {
