@@ -1,6 +1,7 @@
 "use client";
 import getAboutData from '../components/getAboutData';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function About() {
 
@@ -63,6 +64,23 @@ export default function About() {
         button.addEventListener("click", copyToClipboard);
     }, []);
 
+    useEffect(() => {
+
+        const link = document.querySelectorAll('.link');
+
+        link.forEach(function (links) {
+            links.addEventListener('mouseover', function () {
+                customCursor.classList.add('hovering');
+                customPointer.classList.add('hovering');
+            });
+        
+            links.addEventListener('mouseout', function () {
+                customCursor.classList.remove('hovering');
+                customPointer.classList.remove('hovering');
+            });
+        });
+    },[]);
+
     return (
         <>
             <div className='aboutContainer'>
@@ -94,6 +112,14 @@ export default function About() {
                 </div>
                 <div className='rightsContainer'>
                     <p>All Rights Reserved ©</p>
+                </div>
+                <div className='siteContainer'>
+                    <p>Website Design by 1107®</p>
+                    <p className='link'><Link target="_blank" href="https://www.blueroomstudios.com.au">Development by</Link></p>
+                    <p className='link'><Link target="_blank" href="https://www.blueroomstudios.com.au">Blueroom Studios</Link></p>
+                </div>
+                <div className='ackContainer'>
+                    <p>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
                 </div>
             </div>
         </>

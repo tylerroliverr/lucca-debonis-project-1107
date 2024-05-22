@@ -5,22 +5,33 @@ import Image from "next/image";
 import Script from "next/script";
 
 export default function Hero() {
-
     const [projects, setProjects] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [fade, setFade] = useState(false);
     const projectsRef = useRef([]);
+
+    // Function to shuffle an array
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
 
     useEffect(() => {
         async function fetchData() {
             try {
                 let data = await getProjectData();
                 if (data) {
-                    setProjects(data);
+                    data = shuffleArray(data); // Shuffle the projects array
                     projectsRef.current = data; // Update ref with latest projects
+                    setProjects(data); // Set the shuffled projects
+                    console.log(data);
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
+                setLoading(false); // Set loading to false in case of error
             }
         }
 
@@ -55,16 +66,16 @@ export default function Hero() {
                 <div className="nextButton link" onClick={handleNext}></div>
             </div>
             <div className="heroContainer">
-                {projectsRef.current && projectsRef.current.length > 0 && (
+                {projects && projects.length > 0 && (
                     <>
                         <div className={`projectContainer ${fade ? 'fade-out' : ''}`}>
                             <div className="projectImageContainer">
-                                <Image fill className="projectImg" src={projectsRef.current[currentIndex].imagePath} alt="Project" />
+                                <Image fill className="projectImg" src={projects[currentIndex].imagePath} alt="Project" />
                             </div>
                             <div className={`projectDetailsContainer ${fade ? 'fade-out' : ''}`}>
-                                <p className="projectText">{projectsRef.current[currentIndex].projectName}</p>
-                                <p className="projectText">{projectsRef.current[currentIndex].projectYear}</p>
-                                <p className="projectText">{projectsRef.current[currentIndex].projectDetails}</p>
+                                <p className="projectText">{projects[currentIndex].projectName}</p>
+                                <p className="projectText">{projects[currentIndex].projectYear}</p>
+                                <p className="projectText">{projects[currentIndex].projectDetails}</p>
                             </div>
                         </div>
                     </>

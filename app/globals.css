@@ -379,6 +379,23 @@ p {
   mix-blend-mode: difference;
 }
 
+.siteContainer {
+  position: absolute;
+  bottom: var(--padding-horiz);
+  left: 20%;
+  font-size: 1rem;
+  color: #676767;
+}
+
+.ackContainer {
+  position: absolute;
+  bottom: var(--padding-horiz);
+  left: 32%;
+  font-size: 1rem;
+  color: #676767;
+  width: 20%;
+}
+
 .imgContainer {
   position: absolute;
   bottom: 28%;
