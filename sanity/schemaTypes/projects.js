@@ -4,6 +4,11 @@ export const projects = {
     type: "document",
     fields: [
       {
+        title: "Project Order",
+        name: "projectOrder",
+        type: "string"
+      },
+      {
         title: "Project Name",
         name: "projectName",
         type: "string"
