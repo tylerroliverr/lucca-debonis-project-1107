@@ -15,10 +15,10 @@ export default function Navbar() {
         <>
             <div className="navbarContainer">
                 <Link href={"/about"}>
-                    <p className="navItem">About</p>
+                    <p className="navItem link">About</p>
                 </Link>
                 <Link href={"/"}>
-                    <p className="navItem">1107® Reel</p>                
+                    <p className="navItem link reel">1107® Reel</p>                
                 </Link>
                 <MusicPlayer tracks={tracks}/>
             </div>

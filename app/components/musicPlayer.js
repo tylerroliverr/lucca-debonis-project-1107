@@ -39,37 +39,37 @@ export default function MusicPlayer({ tracks }) {
         const newVolume = parseFloat(e.target.value);
         setVolume(newVolume);
         audioRef.current.volume = newVolume;
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         const audio = audioRef.current;
-    
+
         const updateProgress = () => {
-          setProgress((audio.currentTime / audio.duration) * 100);
+            setProgress((audio.currentTime / audio.duration) * 100);
         };
-    
+
         const handleEnded = () => {
-          skipHandler(true); // Move to the next track when the current one ends
+            skipHandler(true); // Move to the next track when the current one ends
         };
-    
+
         audio.addEventListener('timeupdate', updateProgress);
         audio.addEventListener('ended', handleEnded);
-    
+
         return () => {
-          audio.removeEventListener('timeupdate', updateProgress);
-          audio.removeEventListener('ended', handleEnded);
+            audio.removeEventListener('timeupdate', updateProgress);
+            audio.removeEventListener('ended', handleEnded);
         };
-      }, [currentTrackIndex, isPlaying]);
-    
-      useEffect(() => {
+    }, [currentTrackIndex, isPlaying]);
+
+    useEffect(() => {
         if (isPlaying) {
-          audioRef.current.play();
+            audioRef.current.play();
         }
-      }, [currentTrackIndex, isPlaying]);
-    
-      useEffect(() => {
+    }, [currentTrackIndex, isPlaying]);
+
+    useEffect(() => {
         audioRef.current.volume = volume;
-      }, [volume]);
+    }, [volume]);
 
     return (
         <>
@@ -135,9 +135,11 @@ export default function MusicPlayer({ tracks }) {
                     </svg>
 
                 </div>
-                <div className='progressBarContainer'>
+
+                {/* <div className='progressBarContainer'>
                     <div className='progressBar' style={{ width: `${progress}%` }}></div>
-                </div>
+                </div> */}
+
                 {/* <div className='volumeControlContainer'>
                     <input
                         type="range"
@@ -149,6 +151,7 @@ export default function MusicPlayer({ tracks }) {
                         className='volumeSlider'
                     />
                 </div> */}
+                
             </div>
         </>
     )

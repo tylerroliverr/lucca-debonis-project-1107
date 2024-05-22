@@ -5,7 +5,7 @@ export default function Logos() {
         <>
             <div className="logoContainer">
                 <Link href={"/"}>
-                    <img className="logo" src="./logo.png" />
+                    <img className="logo link" src="./logo.png" />
                 </Link>
             </div>
         </>
