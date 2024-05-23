@@ -6,7 +6,10 @@ async function getData() {
         "projectYear": projectYear,
         "projectDetails": projectDetails,
         "projectName": projectName,
-        "imagePath": projectImage.asset -> url
+        "imagePath": projectImage.asset -> url,
+        "video" : video.asset -> {
+          "url" : "https://stream.mux.com/" + playbackId
+        }
       }`
 
       const data = await client.fetch(query);
