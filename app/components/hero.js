@@ -1,8 +1,8 @@
 "use client";
-import getProjectData from "./getProjectData";
 import React, { useEffect, useState, useRef } from 'react';
-import Image from "next/image";
-import Script from "next/script";
+import getProjectData from './getProjectData';
+import ProjectNav from './projectNav';
+import ProjectDisplay from './projectDisplay';
 
 export default function Hero() {
     const [projects, setProjects] = useState([]);
@@ -10,7 +10,40 @@ export default function Hero() {
     const [fade, setFade] = useState(false);
     const projectsRef = useRef([]);
 
-    // Function to shuffle an array
+    useEffect(() => {
+
+        const link = document.querySelectorAll('.link');
+
+        link.forEach(function (links) {
+            links.addEventListener('mouseover', function () {
+                customCursor.classList.add('hovering');
+                customPointer.classList.add('hovering');
+            });
+        
+            links.addEventListener('mouseout', function () {
+                customCursor.classList.remove('hovering');
+                customPointer.classList.remove('hovering');
+            });
+        });
+    },[]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                let data = await getProjectData();
+                if (data) {
+                    data = shuffleArray(data);
+                    setProjects(data);
+                    projectsRef.current = data;
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        fetchData();
+    }, []);
+
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -19,25 +52,6 @@ export default function Hero() {
         return array;
     };
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                let data = await getProjectData();
-                if (data) {
-                    data = shuffleArray(data); // Shuffle the projects array
-                    projectsRef.current = data; // Update ref with latest projects
-                    setProjects(data); // Set the shuffled projects
-                    console.log(data);
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                setLoading(false); // Set loading to false in case of error
-            }
-        }
-
-        fetchData(); // Fetch data initially
-    }, []);
-
     const handlePrev = () => {
         setFade(true);
         setTimeout(() => {
@@ -45,7 +59,7 @@ export default function Hero() {
                 prevIndex === 0 ? projectsRef.current.length - 1 : prevIndex - 1
             );
             setFade(false);
-        }, 300); // Half of the transition time
+        }, 0);
     };
 
     const handleNext = () => {
@@ -55,32 +69,13 @@ export default function Hero() {
                 prevIndex === projectsRef.current.length - 1 ? 0 : prevIndex + 1
             );
             setFade(false);
-        }, 300); // Half of the transition time
+        }, 0);
     };
 
     return (
         <>
-        <Script src="/linkHover.js"/>
-            <div className="navigationButtons">
-                <div className="prevButton link" onClick={handlePrev}></div>
-                <div className="nextButton link" onClick={handleNext}></div>
-            </div>
-            <div className="heroContainer">
-                {projects && projects.length > 0 && (
-                    <>
-                        <div className={`projectContainer ${fade ? 'fade-out' : ''}`}>
-                            <div className="projectImageContainer">
-                                <Image fill className="projectImg" src={projects[currentIndex].imagePath} alt="Project" />
-                            </div>
-                            <div className={`projectDetailsContainer ${fade ? 'fade-out' : ''}`}>
-                                <p className="projectText">{projects[currentIndex].projectName}</p>
-                                <p className="projectText">{projects[currentIndex].projectYear}</p>
-                                <p className="projectText">{projects[currentIndex].projectDetails}</p>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
+            <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
+            <ProjectDisplay fade={fade} currentIndex={currentIndex} projectsRef={projectsRef} />
         </>
     );
 }

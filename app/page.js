@@ -1,9 +1,12 @@
 import Hero from "./components/hero";
+import getProjectData from "./components/getProjectData";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjectData();
+  
   return (
     <main>
-      <Hero/>
+      <Hero projects={projects}/>
     </main>
   );
 }

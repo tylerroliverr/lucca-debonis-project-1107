@@ -291,6 +291,7 @@ p {
 
 .projectImageContainer {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -299,7 +300,7 @@ p {
 
 .projectImg {
   height: auto;
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
   display: block;
 }
