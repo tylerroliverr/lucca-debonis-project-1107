@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState, useRef } from 'react';
 import getProjectData from './getProjectData';
-import ProjectNav from './projectNav';
 import ProjectDisplay from './projectDisplay';
+import ProjectNav from './projectNav';
 import HoverLink from './hoverLink';
 
 export default function Hero() {
@@ -16,9 +16,11 @@ export default function Hero() {
             try {
                 let data = await getProjectData();
                 if (data) {
-                    data = shuffleArray(data);
-                    setProjects(data);
-                    projectsRef.current = data;
+                    // Prepend "welcome" image to the projectsRef array
+                    projectsRef.current = [createWelcomeImage(), ...data];
+                    // Shuffle the array excluding the "welcome" image
+                    shuffleArray(projectsRef.current, 1);
+                    setProjects(projectsRef.current);
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -28,12 +30,21 @@ export default function Hero() {
         fetchData();
     }, []);
 
-    const shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+    const createWelcomeImage = () => {
+        // Assuming you have the path to the welcome image in your public folder
+        return {
+            imagePath: '', // Adjust the path accordingly
+            projectName: 'Welcome',
+            projectYear: '',
+            projectDetails: 'Welcome to our projects!'
+        };
+    };
+
+    const shuffleArray = (array, startIndex = 0) => {
+        for (let i = array.length - 1; i > startIndex; i--) {
+            const j = Math.floor(Math.random() * (i - startIndex + 1)) + startIndex;
             [array[i], array[j]] = [array[j], array[i]];
         }
-        return array;
     };
 
     const handlePrev = () => {
