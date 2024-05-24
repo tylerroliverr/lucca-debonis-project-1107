@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Hero from "./components/hero";
 import getProjectData from "./components/getProjectData";
 import Loader from "./components/loader";
-import setIsPlaying from './components/musicPlayer';
 
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
@@ -13,7 +12,6 @@ export default function Home() {
     setHasEntered(true);
     const projectData = await getProjectData();
     setProjects(projectData);
-    // setIsPlaying(true);
   };
 
   return (
