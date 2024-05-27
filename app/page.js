@@ -5,7 +5,7 @@ import getProjectData from "./components/getProjectData";
 import Loader from "./components/loader";
 
 export default function Home() {
-  const [hasEntered, setHasEntered] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false); //CHANGE BACK
   const [projects, setProjects] = useState(null);
 
   const handleEnterClick = async () => {

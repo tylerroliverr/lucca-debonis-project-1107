@@ -54,7 +54,7 @@ export default function Hero() {
                 prevIndex === 0 ? projectsRef.current.length - 1 : prevIndex - 1
             );
             setFade(false);
-        }, 0);
+        }, 300);
     };
 
     const handleNext = () => {
@@ -64,7 +64,7 @@ export default function Hero() {
                 prevIndex === projectsRef.current.length - 1 ? 0 : prevIndex + 1
             );
             setFade(false);
-        }, 0);
+        }, 300);
     };
 
     return (
