@@ -141,7 +141,7 @@ body {
   overflow: hidden;
   text-align: center;
   font-family: var(--basic-font);
-  font-size: 2rem;
+  font-size: 1.15rem;
   mix-blend-mode: difference;
   color: white;
 }
@@ -169,11 +169,11 @@ button {
   right: var(--padding-vert);
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 3px;
   z-index: 100;
   mix-blend-mode: difference;
   text-align: right;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 .navItem {
@@ -188,7 +188,7 @@ button {
 /* MUSIC SECTION */
 .svgControl {
   width: auto;
-  height: 13px;
+  height: 11.5px;
   transition: transform 0.25s ease-out;
 }
 
@@ -212,8 +212,8 @@ path {
   justify-content: right;
   align-items: center;
   opacity: 0.5;
-  padding-top: 8px;
-  gap: 20px;
+  padding-top: 4px;
+  gap: 22.5px;
 }
 
 .progressBarContainer {
@@ -242,7 +242,7 @@ path {
 }
 
 .soundOnContainer {
-  margin-top: 2rem;
+  margin-top: 1.6rem;
 }
 
 /* LOGO SECTION */
@@ -281,7 +281,7 @@ path {
 
 .loadingContainer {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,14 +289,13 @@ path {
 
 p {
   font-family: var(--basic-font);
-  font-weight: 500;
 }
 
 /* PROJECT SECTION */
 .prevButton,
 .nextButton {
   display: flex;
-  width: 40%;
+  width: 30%;
   height: 100%;
 }
 
@@ -435,9 +434,9 @@ iframe {
 .aboutBlurb {
   position: absolute;
   top: 20%;
-  left: 26px;
-  width: 80%;
-  font-size: 1.8rem;
+  left: var(--padding-vert);
+  width: 58%;
+  font-size: 1.35rem;
   color: white;
 }
 
@@ -445,20 +444,20 @@ iframe {
   display: flex;
   position: absolute;
   bottom: 30%;
-  left: 9%;
-  gap: 12rem;
+  left: var(--padding-vert);
+  gap: 10rem;
 }
 
 .itemTitle {
-  font-size: 1.5rem;
-  margin-bottom: 18px;
+  font-size: 1.45rem;
+  margin-bottom: 16px;
   color: white;
 }
 
 .itemText {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #676767;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
 }
 
 .awardItem {
@@ -583,7 +582,7 @@ canvas {
   }
 
   .textScramble {
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     width: 70%;
   }
 
@@ -593,11 +592,15 @@ canvas {
 
   .play,
   .pause {
-    height: 4.5px;
+    height: 7.5px;
   }
 
   .controls {
-    gap: 14px;
+    gap: 13.9px;
+  }
+
+  .soundOnContainer {
+    margin-top: 1rem;
   }
 
   /* LOGO SECTION */
@@ -654,6 +657,7 @@ canvas {
     position: static;
     padding-left: var(--padding-vert);
     padding-top: 28%;
+    width: 63%;
   }
 
   .imgContainer {
@@ -669,17 +673,17 @@ canvas {
     position: static;
     padding-left: var(--padding-vert);
     padding-top: 16dvw;
-    padding-bottom: 25dvw;
+    padding-bottom: 5dvw;
     gap: 0;
   }
 
   .imgContainer {
-    width: 55%;
+    width: 54%;
   }
 
   .itemText {
     font-size: var(--mobile-paragraph);
-    padding-bottom: 2px;
+    padding-bottom: 1px;
   }
 
   .itemTitle {

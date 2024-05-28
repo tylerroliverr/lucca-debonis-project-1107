@@ -16,8 +16,8 @@ class TextScramble {
       for (let i = 0; i < length; i++) {
         const from = oldText[i] || '';
         const to = newText[i] || '';
-        const start = Math.floor(Math.random() * 50);
-        const end = start + Math.floor(Math.random() * 50);
+        const start = Math.floor(Math.random() * 30);
+        const end = start + Math.floor(Math.random() * 30);
         this.queue.push({ from, to, start, end });
       }
       cancelAnimationFrame(this.frameRequest);
@@ -63,7 +63,7 @@ class TextScramble {
   
     useEffect(() => {
       const phrases = [
-        '1107 DESIGN STUDIO <br> ALL RIGHTS RESERVED <br> MOVING CULTURE <br> 28.0167° S, 153.4000° E'
+        '1107® DESIGN STUDIO <br> ALL RIGHTS RESERVED <br> MOVING CULTURE <br> 28.0167° S, 153.4000° E'
       ];
       const el = elRef.current;
       const fx = new TextScramble(el);
