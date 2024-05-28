@@ -4,6 +4,7 @@ import getProjectData from './getProjectData';
 import ProjectDisplay from './projectDisplay';
 import ProjectNav from './projectNav';
 import HoverLink from './hoverLink';
+import GlassLogo from './3dlogo';
 
 export default function Hero() {
     const [projects, setProjects] = useState([]);
@@ -16,9 +17,9 @@ export default function Hero() {
             try {
                 let data = await getProjectData();
                 if (data) {
-                    // Prepend "welcome" image to the projectsRef array
+                    // Prepend "welcome" image component to the projectsRef array
                     projectsRef.current = [createWelcomeImage(), ...data];
-                    // Shuffle the array excluding the "welcome" image
+                    // Shuffle the array excluding the "welcome" image component
                     shuffleArray(projectsRef.current, 1);
                     setProjects(projectsRef.current);
                 }
@@ -31,12 +32,16 @@ export default function Hero() {
     }, []);
 
     const createWelcomeImage = () => {
-        // Assuming you have the path to the welcome image in your public folder
+        // Return a React component for the welcome image with an identifier
         return {
-            imagePath: '', // Adjust the path accordingly
-            projectName: 'Welcome',
-            projectYear: '',
-            projectDetails: 'Welcome to our projects!'
+            type: 'welcome',
+            component: (
+                <div className='glassContainer'>
+                    <div className='glassLogo'>
+                        <GlassLogo />
+                    </div>
+                </div>
+            ),
         };
     };
 
@@ -69,7 +74,7 @@ export default function Hero() {
 
     return (
         <>
-            <HoverLink/>
+            <HoverLink />
             <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
             <ProjectDisplay fade={fade} currentIndex={currentIndex} projectsRef={projectsRef} />
         </>

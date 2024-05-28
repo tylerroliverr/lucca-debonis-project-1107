@@ -29,9 +29,9 @@ export const projects = {
         type: "image"
       },
       {
-        "title": "Video file",
-        "name": "video",
-        "type": "mux.video"
+        "title": "Video Url",
+        "name": "videoUrl",
+        "type": "string"
       }
     ]
   }

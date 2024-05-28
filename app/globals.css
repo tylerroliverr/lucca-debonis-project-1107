@@ -300,6 +300,14 @@ p {
   height: 100%;
 }
 
+.middleButton {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 19;
+}
+
 .prevButton {
   position: absolute;
   left: 0;
@@ -337,7 +345,8 @@ p {
   /* Add transition property */
 }
 
-.projectContainer.fade-out .projectDetailsContainer {
+.projectContainer.fade-out,
+.projectDetailsContainer.fade-out {
   opacity: 0;
   /* Fade out details container */
 }
@@ -361,6 +370,33 @@ p {
   width: 100%;
   object-fit: cover;
   display: block;
+}
+
+.videoWrapper,
+iframe {
+  width: 100%;
+  height: 100%;
+  container-type: size;
+}
+
+.videoWrapper > iframe {
+  position: absolute;
+  /* keep video centered both vertically and horizontally */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 100%;
+
+  /* force aspect ratio based on parent container */
+  @container (min-aspect-ratio: 16/9) {
+    height: 56.25cqw; /* 100*9/16 */
+  }
+
+  @container (max-aspect-ratio: 16/9) {
+    width: 177.78cqh; /* 100*16/9 */
+  }
 }
 
 /* ABOUT SECTION */
@@ -479,6 +515,25 @@ p {
   align-items: center;
   width: 100%;
   height: 100dvh;
+}
+
+/* 3D LOGO */
+.glassContainer {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glassLogo {
+  width: 50%;
+  height: 50%;
+}
+
+canvas {
+  position: relative;
+  z-index: 20;
 }
 
 @media screen and (max-width: 1600px) {
