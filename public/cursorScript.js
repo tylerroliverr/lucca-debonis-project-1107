@@ -73,3 +73,26 @@ if (pauseButton) {
         }, 100);
     });
 }
+
+// const prevSvgButton = document.querySelector('.leftArrowSvg');
+// const nextSvgButton = document.querySelector('.rightArrowSvg');
+// const nextButton = document.querySelector('.nextButton');
+// const prevButton = document.querySelector('.prevButton');
+
+// if (prevButton && prevSvgButton) {
+//     prevButton.addEventListener('click', function () {
+//         prevSvgButton.classList.add('clicked');
+//         setTimeout(function () {
+//             prevSvgButton.classList.remove('clicked');
+//         }, 100);
+//     });
+// }
+
+// if (nextButton && nextSvgButton) {
+//     nextButton.addEventListener('click', function () {
+//         nextSvgButton.classList.add('clicked');
+//         setTimeout(function () {
+//             nextSvgButton.classList.remove('clicked');
+//         }, 100);
+//     });
+// }

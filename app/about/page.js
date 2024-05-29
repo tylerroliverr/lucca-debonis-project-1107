@@ -10,7 +10,7 @@ export default async function About() {
     return (
         <>
             <HoverLink />
-            <ImageHover/>
+            <ImageHover />
 
             <div className='aboutContainer'>
                 <div className='aboutBlurb'>

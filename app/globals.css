@@ -292,11 +292,13 @@ p {
 }
 
 /* PROJECT SECTION */
+
 .prevButton,
 .nextButton {
+  position: absolute;
   display: flex;
-  width: 30%;
-  height: 100%;
+  width: 25%;
+  height: 80%;
 }
 
 .middleButton {
@@ -308,15 +310,15 @@ p {
 }
 
 .prevButton {
-  position: absolute;
   left: 0;
+  top: 10%;
   cursor: url('/previousCursor.png') 14 4, auto;
   z-index: 20;
 }
 
 .nextButton {
-  position: absolute;
   right: 0;
+  top: 10%;
   cursor: url('/nextCursor.png') 14 4, auto;
   z-index: 20;
 }
@@ -369,6 +371,10 @@ p {
   width: 100%;
   object-fit: cover;
   display: block;
+}
+
+.arrowDiv {
+  display: none;
 }
 
 .videoWrapper,
@@ -527,10 +533,10 @@ iframe {
 
 .glassLogo {
   width: 50%;
-  height: 50%;
+  height: 100%;
 }
 
-canvas {
+Canvas {
   position: relative;
   z-index: 20;
 }
@@ -634,6 +640,11 @@ canvas {
     width: 80px;
   }
 
+  /* 3D LOGO */
+  .glassLogo {
+    width: 75%;
+  }
+
   /* FOOTER SECTION */
   .timeAndLocationContainer {
     font-size: var(--mobile-paragraph);
@@ -663,6 +674,35 @@ canvas {
 
   .projectImg {
     height: 100%;
+  }
+
+  .nextButton,
+  .prevButton {
+    mix-blend-mode: difference;
+  }
+
+  .arrowDiv {
+    display: flex;
+    width: 10%;
+    height: auto;
+  }
+
+  .leftArrowSvg,
+  .rightArrowSvg {
+    height: 15px;
+    opacity: 0.5;
+  }
+
+  .leftArrow {
+    position: absolute;
+    top: 45%;
+    left: 15px;
+  }
+
+  .rightArrow {
+    position: absolute;
+    top: 45%;
+    right: 15px;
   }
 
   /* ABOUT SECTION */

@@ -62,7 +62,7 @@ export default function GlassLogo() {
       <PerspectiveCamera
         makeDefault
         fov={80}
-        position={[0, 0.5, 6]}
+        position={[5, 0.5, 10]}
         near={0.1}
         far={1000}
       />
@@ -71,7 +71,7 @@ export default function GlassLogo() {
       <directionalLight position={[2, 5, 2]} intensity={1} />
       <Suspense fallback={null}>
         <Model url="/glasslogo.gltf" />
-        <Environment preset="lobby" />
+        <Environment preset="dawn" />
       </Suspense>
       <OrbitControls />
     </Canvas>

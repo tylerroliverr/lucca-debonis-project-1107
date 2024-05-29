@@ -16,6 +16,29 @@ export default function ImageHover() {
             aboutDiv.classList.remove('expanded');
         });
 
+    }, []);
+
+    // useEffect(() => {
+    //     const hoverImage = document.querySelector('.imgContainer');
+    //     const aboutDiv = document.querySelector('.aboutContainer');
+
+    //     hoverImage.addEventListener('click', function () {
+    //         hoverImage.classList.add('fade-out');
+    //         aboutDiv.classList.add('expanded');
+    //         console.log("clicked");
+
+    //     });
+
+    //     hoverImage.addEventListener('click', function () {
+    //         hoverImage.classList.remove('fade-out');
+    //         aboutDiv.classList.remove('expanded');
+    //         console.log("clicked");
+
+    //     });
+
+    // }, []);
+
+    useEffect(() => {
         const button = document.querySelector(".email");
 
         // Function to copy text to clipboard and show an alert
