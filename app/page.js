@@ -1,8 +1,21 @@
-"use client";
-import { useState, useEffect } from 'react';
 import Hero from "./components/hero";
 import getProjectData from "./components/getProjectData";
-import Loader from "./components/loader";
+
+export default async function Home() {
+
+  const data = await getProjectData();
+
+  const initialData = {
+    projects: data,
+  };
+
+  return (
+    <main>
+      <Hero initialData={initialData} />
+    </main>
+  );
+}
+
 
 // export default function Home() {
 //   const [hasEntered, setHasEntered] = useState(false); //CHANGE BACK
@@ -29,24 +42,4 @@ import Loader from "./components/loader";
 //     </main>
 //   );
 // }
-
-export default function Home() {
-  const [projects, setProjects] = useState(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const projectData = await getProjectData();
-      setProjects(projectData);
-    };
-
-    fetchProjects();
-  }, []);
-
-  return (
-    <main>
-        <Loader />
-        <Hero projects={projects} />
-    </main>
-  );
-}
 

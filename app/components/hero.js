@@ -1,49 +1,65 @@
 "use client";
 import React, { useEffect, useState, useRef } from 'react';
-import getProjectData from './getProjectData';
 import ProjectDisplay from './projectDisplay';
 import ProjectNav from './projectNav';
 import HoverLink from './hoverLink';
 import GlassLogo from './3dlogo';
+import Loader from './loader';
 
-export default function Hero() {
+export default function Hero({ initialData }) {
     const [projects, setProjects] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [fade, setFade] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [loadedImages, setLoadedImages] = useState(0);
     const projectsRef = useRef([]);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                let data = await getProjectData();
-                if (data) {
-                    // Prepend "welcome" image component to the projectsRef array
-                    projectsRef.current = [createWelcomeImage(), ...data];
-                    // Shuffle the array excluding the "welcome" image component
-                    shuffleArray(projectsRef.current, 1);
-                    setProjects(projectsRef.current);
+        async function preloadImages() {
+            const promises = initialData.projects.map(project => {
+                if (project.mediaType === 'image') {
+                    return new Promise((resolve, reject) => {
+                        const img = new Image();
+                        img.src = project.mediaPath;
+                        img.onload = () => {
+                            setLoadedImages(prev => prev + 1);
+                            resolve();
+                        };
+                        img.onerror = reject;
+                    });
+                } else {
+                    // Handle video preloading if necessary
+                    return Promise.resolve();
                 }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
+            });
+
+            await Promise.all(promises);
+            setLoading(false);
         }
 
-        fetchData();
-    }, []);
+        preloadImages();
+    }, [initialData]);
 
-    const createWelcomeImage = () => {
-        // Return a React component for the welcome image with an identifier
-        return {
-            type: 'welcome',
-            component: (
-                <div className='glassContainer'>
-                    <div className='glassLogo'>
-                        <GlassLogo />
+    useEffect(() => {
+        if (!loading) {
+            // Create the welcome image component
+            const welcomeImage = {
+                type: 'welcome',
+                component: (
+                    <div className='glassContainer'>
+                        <div className='glassLogo'>
+                            <GlassLogo />
+                        </div>
                     </div>
-                </div>
-            ),
-        };
-    };
+                ),
+            };
+            // Prepend "welcome" image component to the projectsRef array
+            projectsRef.current = [welcomeImage, ...initialData.projects];
+            // Shuffle the array excluding the "welcome" image component
+            shuffleArray(projectsRef.current, 1);
+            setProjects(projectsRef.current);
+        }
+    }, [loading, initialData]);
 
     const shuffleArray = (array, startIndex = 0) => {
         for (let i = array.length - 1; i > startIndex; i--) {
@@ -72,11 +88,23 @@ export default function Hero() {
         }, 300);
     };
 
+    const totalAssets = initialData.projects.filter(project => project.mediaType === 'image').length;
+    const progress = Math.floor((loadedImages / totalAssets) * 100);
+
     return (
         <>
-            <HoverLink />
-            <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
-            <ProjectDisplay fade={fade} currentIndex={currentIndex} projectsRef={projectsRef} />
+            {loading ? (
+                <div className='loadingBar'>
+                    <div className='percentage'>{Math.round(progress)}%</div>
+                </div>
+            ) : (
+                <>
+                    <Loader />
+                    <HoverLink />
+                    <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
+                    <ProjectDisplay fade={fade} currentIndex={currentIndex} projectsRef={projectsRef} />
+                </>
+            )}
         </>
     );
 }

@@ -12,7 +12,7 @@ const ProjectDisplay = ({ fade, currentIndex, projectsRef }) => {
                     ) : (
                         <>
                             <div className="projectImageContainer">
-                            {currentProject.mediaType === 'vimeo' ? (
+                                {currentProject.mediaType === 'vimeo' ? (
                                     <div className="videoWrapper">
                                         <iframe
                                             src={currentProject.mediaPath}
