@@ -63,7 +63,7 @@ class TextScramble {
   
     useEffect(() => {
       const phrases = [
-        '1107® DESIGN STUDIO <br> ALL RIGHTS RESERVED <br> MOVING CULTURE <br> 28.0167° S, 153.4000° E'
+        `1107® DESIGN STUDIO <br> ALL RIGHTS RESERVED <br> MOVING CULTURE <br> 28.0167° S, 153.4000° E`
       ];
       const el = elRef.current;
       const fx = new TextScramble(el);

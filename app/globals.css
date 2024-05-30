@@ -146,6 +146,10 @@ body {
   color: white;
 }
 
+.trademark {
+  font-size: 0.8rem;
+}
+
 .enterDiv {
   display: flex;
   justify-content: center;
@@ -444,6 +448,7 @@ iframe {
   width: 58%;
   font-size: 1.35rem;
   color: white;
+  z-index: 2;
 }
 
 .itemContainer {
@@ -452,6 +457,7 @@ iframe {
   bottom: 30%;
   left: var(--padding-vert);
   gap: 10rem;
+  z-index: 2;
 }
 
 .itemTitle {
@@ -513,6 +519,11 @@ iframe {
   width: 30%;
 }
 
+.email {
+  color: #676767;
+  font-size: 1.15rem;
+}
+
 /* REEL SECTION */
 .playReel {
   display: flex;
@@ -520,6 +531,10 @@ iframe {
   align-items: center;
   width: 100%;
   height: 100dvh;
+}
+
+.playReelMobile {
+  display: none;
 }
 
 /* 3D LOGO */
@@ -618,6 +633,10 @@ Canvas {
     width: 70%;
   }
 
+  .trademark {
+    font-size: 0.6rem;
+  }
+
   .svgControl {
     height: 9px;
   }
@@ -690,7 +709,7 @@ Canvas {
   .leftArrowSvg,
   .rightArrowSvg {
     height: 15px;
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   .leftArrow {
@@ -714,16 +733,35 @@ Canvas {
     display: block;
     height: 100%;
     width: 100%;
+    position: relative; /* Ensure the ::before pseudo-element is positioned relative to this */
     background-color: #3C3C3C;
     transition: all 2s ease-out;
+  }
+  
+  .aboutContainerMobile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Fill the entire width */
+    height: 100%; /* Fill the entire height */
+    background-image: url('/about.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: width 0.25s ease-out, height 0.25s ease-out, opacity 0.25s ease-out;
+  }
+  
+  .aboutContainerMobile.expanded::before {
+    opacity: 1;
   }
 
   .aboutBlurb {
     font-size: var(--mobile-paragraph);
-    position: static;
-    padding-left: var(--padding-vert);
+    position: relative;
     padding-top: 28%;
     width: 63%;
+    z-index: 2;
   }
 
   .imgContainer {
@@ -737,14 +775,19 @@ Canvas {
 
   .itemContainer {
     position: static;
-    padding-left: var(--padding-vert);
     padding-top: 16dvw;
     padding-bottom: 5dvw;
+    padding-left: var(--padding-vert);
     gap: 0;
   }
 
   .imgContainer {
     width: 54%;
+  }
+
+  .items {
+    position: relative;
+    z-index: 2;
   }
 
   .itemText {
@@ -776,12 +819,58 @@ Canvas {
     width: 55%;
   }
 
+  .email {
+    color: #676767;
+    font-size: var(--mobile-paragraph);
+  }
+
   .rightsContainer,
   .siteContainer {
     font-size: var(--mobile-paragraph);
     position: static;
     padding-bottom: var(--padding-horiz);
     padding-left: var(--padding-vert);
+  }
+
+  /* REEL PAGE */
+  .playReel {
+    display: none;
+  }
+
+  .playReelMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+    gap: 4.2rem;
+  }
+
+  .mobileExp {
+    color: #676767;
+    opacity: 0.9;
+  }
+
+  .turnScreen {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: #676767;
+    opacity: 0.9;
+  }
+
+  .watchReel {
+    display: flex;
+  }
+
+  .rightsContainerMobile {
+    position: fixed;
+    display: flex;
+    gap: 25px;
+    bottom: var(--padding-horiz);
+    left: var(--padding-vert);
+    z-index: 1000;
+    font-size: var(--mobile-paragraph);
   }
 
 }
