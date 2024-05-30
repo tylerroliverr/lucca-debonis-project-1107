@@ -3,7 +3,7 @@ import React from 'react';
 const ProjectNav = ({ handlePrev, handleNext }) => {
     return (
         <div className="navigationButtons">
-            <div className="prevButton link" onClick={handlePrev}>
+            <div className="prevButton link navLink" onClick={handlePrev}>
                 <div className='arrowDiv leftArrow'>
                     <svg className='leftArrowSvg' version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -22,7 +22,7 @@ l-211 217 714 715 c392 393 720 727 727 741 34 66 -12 169 -92 205 -49 22 -70
                 </div>
             </div>
             <div className='middleButton'></div>
-            <div className="nextButton link" onClick={handleNext}>
+            <div className="nextButton link navLink" onClick={handleNext}>
                 <div className='arrowDiv rightArrow'>
                     <svg className='rightArrowSvg' version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"

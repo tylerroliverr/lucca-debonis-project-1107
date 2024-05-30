@@ -48,8 +48,10 @@ export default function ImageClickMobile({ aboutData }) {
                 </div>
             </div>
             <div className='siteContainer'>
-                <p>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
-                <p>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+                <div className="siteContainerItems">
+                    <p>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
+                    <p>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+                </div>
             </div>
             <div className='rightsContainer'>
                 <p>All Rights Reserved ©</p>

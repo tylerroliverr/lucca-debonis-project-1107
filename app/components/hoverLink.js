@@ -5,6 +5,7 @@ export default function HoverLink() {
     useEffect(() => {
 
         const link = document.querySelectorAll('.link');
+        const navLink = document.querySelectorAll('.navLink');
 
         link.forEach(function (links) {
             links.addEventListener('mouseover', function () {
@@ -17,5 +18,16 @@ export default function HoverLink() {
                 customPointer.classList.remove('hovering');
             });
         });
+
+        navLink.forEach(function (navlinks) {
+            navlinks.addEventListener('mouseover', function () {
+                customPointer.classList.add('hoveringNav');
+            });
+        
+            navlinks.addEventListener('mouseout', function () {
+                customPointer.classList.remove('hoveringNav');
+            });
+        });
+
     },[]);
 }

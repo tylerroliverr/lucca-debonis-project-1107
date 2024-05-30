@@ -36,7 +36,7 @@ const EmailButton = () => {
     }, []);
 
     return (
-        <button ref={buttonRef} className="email">
+        <button ref={buttonRef} className="email link">
             <p>hello@1107.co</p>
         </button>
     );

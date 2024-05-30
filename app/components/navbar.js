@@ -1,7 +1,15 @@
+"use client";
 import Link from "next/link";
 import MusicPlayer from "./musicPlayer";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+
+    const pathname = usePathname();
+    const isAboutPage = pathname === '/about';
+    const noDifference = isAboutPage ? 'noDifference link' : 'reel link navItem';
+    const noDiffNavContainer = isAboutPage ? 'navbarContainerNoDiff' : 'navbarContainer';
+    const notDiffNavItem = isAboutPage ? 'navItemNoDiff link' : 'navItem link';
 
     const tracks = [
         { name: 'track 1', url: '/music/1107_IntroSong_AiVoice.mp3' },
@@ -13,12 +21,12 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="navbarContainer">
+            <div className={noDiffNavContainer}>
                 <Link href={"/about"}>
-                    <p className="navItem link">About</p>
+                    <p className={notDiffNavItem}>About</p>
                 </Link>
                 <Link href={"/reel"}>
-                    <p className="navItem link reel">1107® Reel</p>                
+                    <p className={noDifference}>1107® Reel</p>                
                 </Link>
                 <MusicPlayer tracks={tracks}/>
             </div>

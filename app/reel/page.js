@@ -6,7 +6,7 @@ export default function Reel() {
         <>
         <HoverLink/>
             <div className="playReel">
-                <p className="link">Play Reel</p>
+                <p className="link">Watch Reel</p>
             </div>
 
             <div className="playReelMobile">

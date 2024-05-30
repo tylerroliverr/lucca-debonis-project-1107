@@ -68,7 +68,7 @@ export default function GlassLogo() {
       />
       {/* <DynamicFOVCamera fovs={fovs} /> */}
       <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 5, 2]} intensity={1} />
+      <directionalLight position={[2, 5, 2]} intensity={2} />
       <Suspense fallback={null}>
         <Model url="/glasslogo.gltf" />
         <Environment preset="dawn" />
