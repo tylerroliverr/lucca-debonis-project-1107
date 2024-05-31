@@ -11,16 +11,38 @@ async function getData() {
       "videoUrl": videoUrl
     }`;
 
-  const data = await client.fetch(query);
-  return data.map(project => {
-    const embedUrl = project.videoUrl ? `https://player.vimeo.com/video/${project.videoUrl}&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&background=1` : null;
+  try {
+    const data = await client.fetch(query);
+    return data.map(project => {
+      const embedUrl = project.videoUrl ? `https://player.vimeo.com/video/${project.videoUrl}&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&background=1` : null;
 
-    return {
-      ...project,
-      mediaType: embedUrl ? 'vimeo' : 'image',
-      mediaPath: embedUrl || project.imagePath || project.imagePathMobile
-    };
-  });
+      let mediaType;
+      let mediaPath;
+
+      if (embedUrl) {
+        mediaType = 'vimeo';
+        mediaPath = embedUrl;
+      } else if (project.imagePathMobile) {
+        mediaType = 'imageMobile';
+        mediaPath = project.imagePathMobile;
+      } else if (project.imagePath) {
+        mediaType = 'image';
+        mediaPath = project.imagePath;
+      } else {
+        mediaType = null;
+        mediaPath = null;
+      }
+
+      return {
+        ...project,
+        mediaType,
+        mediaPath
+      };
+    });
+  } catch (error) {
+    console.error('Error fetching data from Sanity:', error);
+    return [];
+  }
 }
 
 export default async function getProjectData() {

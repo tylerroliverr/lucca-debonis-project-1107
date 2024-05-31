@@ -22,7 +22,22 @@ const ProjectDisplay = ({ fade, currentIndex, projectsRef }) => {
                                         ></iframe>
                                     </div>
                                 ) : (
-                                    <img className="projectImg" src={currentProject.mediaPath} alt="Project" />
+                                    <>
+                                        {currentProject.imagePathMobile && (
+                                            <img
+                                                className="projectImg projectImgMobile"
+                                                src={currentProject.imagePathMobile}
+                                                alt="Project Mobile"
+                                            />
+                                        )}
+                                        {currentProject.imagePath && (
+                                            <img
+                                                className="projectImg projectImgDesktop"
+                                                src={currentProject.imagePath}
+                                                alt="Project"
+                                            />
+                                        )}
+                                    </>
                                 )}
                             </div>
                             <div className={`projectDetailsContainer ${fade ? 'fade-out' : ''}`}>

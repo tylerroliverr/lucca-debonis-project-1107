@@ -981,3 +981,24 @@ Canvas {
   }
 
 }
+
+/* EXTRA QUERIES FOR PROJECTS */
+.projectImgMobile {
+  display: none;
+}
+
+.projectImgDesktop {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  /* Show the mobile image if it exists */
+  .projectImgMobile {
+      display: block;
+  }
+
+  /* Hide the desktop image only if the mobile image exists */
+  .projectImgMobile + .projectImgDesktop {
+      display: none;
+  }
+}
