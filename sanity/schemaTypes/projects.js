@@ -29,6 +29,11 @@ export const projects = {
         type: "image"
       },
       {
+        title: "Project Image Mobile",
+        name: "projectImageMobile",
+        type: "image"
+      },
+      {
         "title": "Video Url",
         "name": "videoUrl",
         "type": "string"

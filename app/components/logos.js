@@ -1,12 +1,14 @@
-import Link from "next/link"
+import Link from "next/link";
+import HoverLogo from "./hoverLogo";
 
 export default function Logos() {
     return (
         <>
+        {/* <HoverLogo /> */}
             <div className="logoContainer">
                 <Link href={"/"}>
-                    {/* <img className="logo link" src="./logo.png" /> */}
-                    <svg className="logo link" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 11.44">
+                    <img className="logo link logoNumbers" src="./logo.png" />
+                    <svg className="logo link logoWords" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 11.44">
                         <g className="logo link" fill="#fff">
                             <path d="M6.81,4.99v1.15H2.59v2.76h4.93v1.15H1.25V1.37H7.4v1.15H2.59v2.47H6.81z" />
                             <path d="M10.01,1.37v7.53h4.4v1.15H8.67V1.37H10.01z" />

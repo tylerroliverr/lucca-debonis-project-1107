@@ -7,6 +7,7 @@ async function getData() {
       "projectDetails": projectDetails,
       "projectName": projectName,
       "imagePath": projectImage.asset -> url,
+      "imagePathMobile": projectImageMobile.asset -> url,
       "videoUrl": videoUrl
     }`;
 
@@ -17,7 +18,7 @@ async function getData() {
     return {
       ...project,
       mediaType: embedUrl ? 'vimeo' : 'image',
-      mediaPath: embedUrl || project.imagePath
+      mediaPath: embedUrl || project.imagePath || project.imagePathMobile
     };
   });
 }
