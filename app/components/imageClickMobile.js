@@ -40,17 +40,23 @@ export default function ImageClickMobile({ aboutData }) {
                             <p className='itemText awardItem' key={index}>{award}</p>
                         ))}
                     </div>
+                    <div className='contactContainer'>
+                  <p className='itemTitle'>Credits</p>
+                  <p className='itemText awardItem creditItem'>Mont Architects, Project developed at Friends Of</p>
+                  <p className='itemText awardItem creditItem'>The Art of Healing, Project developed at Friends Of</p>
+                  <p className='itemText awardItem creditItem'>Little Tommy’s, Project developed at Pennybridge Creative</p>
+                  <p className='itemText awardItem creditItem'>Little Tommy’s, Photography by Frend</p>
+               </div>
+               <div className='contactContainer'>
+                  <p className='itemTitle'>Acknowledgments</p>
+                  <p className='itemText awardItem'>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
+                  <p className='itemText'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+               </div>
                 </div>
                 <div className={`imgContainer ${isExpanded ? 'fade-out' : ''}`}
                     onClick={handleToggle}
                 >
                     <img className='aboutImage' src="/newlucca.png" />
-                </div>
-            </div>
-            <div className='siteContainer'>
-                <div className="siteContainerItems">
-                    <p>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
-                    <p>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
                 </div>
             </div>
             <div className='rightsContainer'>
