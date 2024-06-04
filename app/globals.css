@@ -541,8 +541,8 @@ iframe {
   position: absolute;
   top: 20%;
   left: var(--padding-vert);
-  width: 58%;
-  font-size: 1.35rem;
+  width: 65%;
+  font-size: 1.1rem;
   color: white;
   z-index: 2;
 }
@@ -550,20 +550,20 @@ iframe {
 .itemContainer {
   display: flex;
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   left: var(--padding-vert);
-  gap: 10rem;
+  gap: 3rem;
   z-index: 2;
 }
 
 .itemTitle {
-  font-size: 1.45rem;
-  margin-bottom: 16px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
   color: white;
 }
 
 .itemText {
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: #a4a4a4;
   padding-bottom: 2px;
 }
@@ -610,16 +610,16 @@ iframe {
   height: auto;
 }
 
-.awardsContainer {
-  width: 20%;
+.capabilitiesContainer {
+  width: 9%;
 }
 
-.credits {
-   padding-left: 9.5rem;
+.awardsContainer {
+  width: 8%;
 }
 
 .creditItem {
-   max-width: 90%;
+   max-width: 45%;
 }
 
 .email {
@@ -628,7 +628,13 @@ iframe {
 }
 
 .ackItem {
-   max-width: 50%;
+   max-width: 16%;
+}
+
+.creditack {
+  display: flex;
+  position: relative;
+  left: 23%;
 }
 
 /* REEL SECTION */
@@ -1080,8 +1086,7 @@ Canvas {
    }
 
    .creditack {
-      display: flex;
-      padding-left: 18%;
+    left: 18%;
    }
 }
 
@@ -1091,16 +1096,15 @@ Canvas {
    }
 
    .creditack {
-      gap: 2.8rem;
-      padding-left: 15%;
+    left: 15%;
    }
 
    .ackItem {
-      max-width: 38%;
+      max-width: 30%;
    }
 
    .creditItem {
-      max-width: 100%;
+      max-width: 85%;
    }
 
    .awardsContainer {
