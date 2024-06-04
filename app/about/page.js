@@ -49,7 +49,7 @@ export default async function About() {
                <div className='contactContainer ackCont'>
                   <p className='itemTitle'>Acknowledgments</p>
                   <p className='itemText awardItem ackItem'>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
-                  <p className='itemText ackItem'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+                  <p className='itemText ackItem ackDevItem'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
                </div>
                </div>
             </div>

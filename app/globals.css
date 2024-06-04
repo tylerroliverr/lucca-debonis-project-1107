@@ -509,7 +509,7 @@ iframe {
   height: 100dvh;
   width: 100%;
   background-color: #3C3C3C;
-  transition: all 2s ease-out;
+  /* transition: width 2s ease-out, height 2s ease-out, opacity 2s ease-out; */
 }
 
 .aboutContainerMobile {
@@ -542,7 +542,7 @@ iframe {
   top: 20%;
   left: var(--padding-vert);
   width: 65%;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: white;
   z-index: 2;
 }
@@ -557,7 +557,7 @@ iframe {
 }
 
 .itemTitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin-bottom: 10px;
   color: white;
 }
@@ -588,7 +588,7 @@ iframe {
   position: absolute;
   bottom: var(--padding-horiz);
   left: 9%;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #a4a4a4;
   display: flex;
   gap: 35px;
@@ -624,11 +624,15 @@ iframe {
 
 .email {
   color: #a4a4a4;
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 .ackItem {
-   max-width: 16%;
+   max-width: 17%;
+}
+
+.ackDevItem {
+  max-width: 20%;
 }
 
 .creditack {
@@ -975,6 +979,14 @@ Canvas {
     gap: 2rem;
     position: relative;
     z-index: 2;
+  }
+
+  .capabilitiesContainer {
+    width: 100%;
+  }
+
+  .creditItem {
+    max-width: 90%;
   }
 
   /* REEL PAGE */
