@@ -1014,9 +1014,9 @@ Canvas {
 
 }
 
-@media screen and (min-width: 701px) and (max-width: 1590px) {
+@media screen and (min-width: 701px) and (max-width: 1900px) {
    p {
-      font-size: 1rem;
+      font-size: 0.95rem;
    }
 
    /* ABOUT SECTION */
@@ -1025,29 +1025,33 @@ Canvas {
    }
 
    .capabilitiesContainer {
-      width: 25%;
+      width: 15%;
    }
 
    .itemContainer {
       left: var(--padding-vert);
-      gap: 4rem;
+      gap: 2rem;
    }
 
    .awardsContainer {
-      width: 30%;
+      width: 18%;
    }
 
    .itemContainer {
-      bottom: 10%;
+      bottom: 8%;
    }
 
    .aboutBlurb {
-      width: 70%;
+      width: 57%;
       top: 15%;
    }
 
+   .aboutBlurb p {
+      font-size: 1rem;
+   }
+
    .credits {
-      padding-left: 6rem;
+      padding-left: 0;
    }
 
    .awardItem {
@@ -1055,13 +1059,57 @@ Canvas {
    }
 
    .ackItem {
-      max-width: 50%;
+      max-width: 30%;
+   }
+
+   .creditItem {
+      max-width: 70%;
    }
 
    .controls {
-      gap: 17px;
+      gap: 15px;
    }
 
+   .itemTitle {
+      font-size: 1rem;
+      margin-bottom: 10px;
+   }
+
+   .itemText {
+      font-size: 0.95rem;
+   }
+
+   .creditack {
+      display: flex;
+      padding-left: 18%;
+   }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1490px) {
+   .itemContainer {
+      bottom: 5%;
+   }
+
+   .creditack {
+      gap: 2.8rem;
+      padding-left: 15%;
+   }
+
+   .ackItem {
+      max-width: 38%;
+   }
+
+   .creditItem {
+      max-width: 100%;
+   }
+
+   .awardsContainer {
+      width: 30%;
+   }
+
+   .aboutBlurb {
+      width: 70%;
+   }
 }
 
 /* EXTRA QUERIES FOR PROJECTS */
