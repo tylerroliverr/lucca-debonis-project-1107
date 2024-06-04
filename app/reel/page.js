@@ -17,7 +17,7 @@ export default async function Reel() {
     return (
         <>
         <HoverLink />
-            {showVideo ? (
+            {/* {showVideo ? (
                 <div className='projectContainer'>
                 <div className='projectImageContainer'>
                 <div className="videoWrapper">
@@ -45,7 +45,20 @@ export default async function Reel() {
                 </div>
             </div>
             </>
-        )}
+        )} */}
+        <>
+            <div className="playReel">
+                <p className="link">
+                    Coming Soon
+                </p>
+            </div>
+
+            <div className="playReelMobile">
+                <div className='watchDiv'>
+                    <p className='watchReel'>Coming Soon</p>
+                </div>
+            </div>
+            </>
             <div className='rightsContainerMobile'>
                 <p>All Rights Reserved ©</p>
             </div>
