@@ -8,12 +8,12 @@ const EmailButton = () => {
       const button = buttonRef.current;
 
       const copyToClipboard = async () => {
-         const text = "hello@1107.co"; // Replace this with the text you want to copy
+         const text = "debonislucca11@gmail.com"; // Replace this with the text you want to copy
 
          try {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                await navigator.clipboard.writeText(text);
-               alert('Email: hello@1107.co - Copied to clipboard!');
+               alert('Email: debonislucca11@gmail.com - Copied to clipboard!');
             } else {
                const textArea = document.createElement('textarea');
                textArea.value = text;

@@ -28,8 +28,8 @@ export default function ImageClickMobile({ aboutData }) {
                     </div>
                     <div className='contactContainer'>
                         <p className='itemTitle'>Contact</p>
-                        <p className='itemText link'>Instagram</p>
-                        <p className='itemText link'>LinkedIn</p>
+                        <p className='itemText link'><Link target='_blank' href={"https://www.instagram.com/luccadebonis/"}>Instagram</Link></p>
+                  <p className='itemText link'><Link target='_blank' href={"https://www.linkedin.com/in/lucca-de-bonis-43151b194/"}>LinkedIn</Link></p>
                         <div className='itemText link email'>
                             <EmailButton />
                         </div>
