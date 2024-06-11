@@ -9,34 +9,32 @@ import Loader from './loader';
 export default function Hero({ initialData }) {
     const [projects, setProjects] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [fade, setFade] = useState(false);
     const [loading, setLoading] = useState(true);
     const [loadedImages, setLoadedImages] = useState(0);
     const projectsRef = useRef([]);
 
     useEffect(() => {
         async function preloadImages() {
-            const promises = initialData.projects.map(project => {
-                if (project.mediaType === 'image') {
-                    return new Promise((resolve, reject) => {
+            const promises = initialData.projects.map((project) => {
+                return new Promise((resolve, reject) => {
+                    if (project.mediaType === 'image') {
                         const img = new Image();
                         img.src = project.mediaPath;
-                        img.onload = () => {
-                            setLoadedImages(prev => prev + 1);
-                            resolve();
-                        };
+                        img.onload = resolve;
                         img.onerror = reject;
-                    });
-                } else {
-                    // Handle video preloading if necessary
-                    return Promise.resolve();
-                }
+                    } else {
+                        resolve();
+                    }
+                });
             });
-
-            await Promise.all(promises);
-            setLoading(false);
+            try {
+                await Promise.all(promises);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error preloading images:", error);
+            }
         }
-
+    
         preloadImages();
     }, [initialData]);
 
@@ -69,23 +67,15 @@ export default function Hero({ initialData }) {
     };
 
     const handlePrev = () => {
-        setFade(true);
-        setTimeout(() => {
-            setCurrentIndex(prevIndex =>
-                prevIndex === 0 ? projectsRef.current.length - 1 : prevIndex - 1
-            );
-            setFade(false);
-        }, 300);
+        setCurrentIndex(prevIndex =>
+            prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+        );
     };
 
     const handleNext = () => {
-        setFade(true);
-        setTimeout(() => {
-            setCurrentIndex(prevIndex =>
-                prevIndex === projectsRef.current.length - 1 ? 0 : prevIndex + 1
-            );
-            setFade(false);
-        }, 300);
+        setCurrentIndex(prevIndex =>
+            prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+        );
     };
 
     const totalAssets = initialData.projects.filter(project => project.mediaType === 'image').length;
@@ -102,7 +92,15 @@ export default function Hero({ initialData }) {
                     <Loader />
                     <HoverLink />
                     <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
-                    <ProjectDisplay fade={fade} currentIndex={currentIndex} projectsRef={projectsRef} />
+                    <div className="projectsContainer">
+                        {projects.map((project, index) => (
+                            <ProjectDisplay
+                                key={index}
+                                project={project}
+                                isActive={currentIndex === index}
+                            />
+                        ))}
+                    </div>                
                 </>
             )}
         </>
