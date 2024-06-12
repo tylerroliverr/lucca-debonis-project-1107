@@ -35,22 +35,27 @@ export default function ImageClickMobile({ aboutData }) {
                   </div>
                </div>
                <div className='awardsContainer'>
-                  <p className='itemTitle'>Recognition</p>
+                  <p className='itemTitle recTitle'>Recognition</p>
                   {aboutData.awards && aboutData.awards.map((award, index) => (
                      <p className='itemText awardItem' key={index}>{award}</p>
                   ))}
                </div>
-               <div className='contactContainer'>
-                  <p className='itemTitle'>Credits</p>
-                  <p className='itemText awardItem creditItem'>Mont Architects, Project developed at Friends Of</p>
-                  <p className='itemText awardItem creditItem'>The Art of Healing, Project developed at Friends Of</p>
-                  <p className='itemText awardItem creditItem'>Little Tommy’s, Project developed at Pennybridge Creative</p>
-                  <p className='itemText awardItem creditItem'>Little Tommy’s, Photography by Frend</p>
+               <div className='experienceContainer'>
+                  <p className='itemTitle'>Experience</p>
+                  {aboutData.experience && aboutData.experience.map((experience, index) => (
+                     <p className='itemText' key={index}>{experience}</p>
+                  ))}
                </div>
-               <div className='contactContainer'>
+               <div className='creditContainer'>
+                  <p className='itemTitle'>Credits</p>
+                  <p className='itemText creditItem'>Mont Architects, Project developed at Friends Of</p>
+                  <p className='itemText creditItem'>The Art of Healing, Project developed at Friends Of</p>
+                  <p className='itemText creditItem'>Little Tommy’s, Project developed at Pennybridge Creative</p>
+                  <p className='itemText'>Little Tommy’s, Photography by Frend</p>
+               </div>
+               <div className='acknowledgeContainer'>
                   <p className='itemTitle'>Acknowledgments</p>
-                  <p className='itemText awardItem'>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
-                  <p className='itemText'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+                  <p className='itemText'>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
                </div>
             </div>
             <div className={`imgContainer ${isExpanded ? 'fade-out' : ''}`}
@@ -60,7 +65,8 @@ export default function ImageClickMobile({ aboutData }) {
             </div>
          </div>
          <div className='rightsContainer'>
-            <p>All Rights Reserved ©</p>
+            <p className='itemText'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
+            <p className="itemText">All Rights Reserved ©</p>
          </div>
       </div>
    );

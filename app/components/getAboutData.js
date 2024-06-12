@@ -5,7 +5,8 @@ async function getData() {
     *[_type == "about"] {
         capabilities,
         "blurb": aboutBlurb,
-        awards
+        awards,
+        experience
       }[0]`
 
       const data = await client.fetch(query);

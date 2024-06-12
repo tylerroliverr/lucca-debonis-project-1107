@@ -556,7 +556,7 @@ iframe {
   top: 20%;
   left: var(--padding-vert);
   width: 65%;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: white;
   z-index: 2;
 }
@@ -566,12 +566,36 @@ iframe {
   position: absolute;
   bottom: 10%;
   left: var(--padding-vert);
-  gap: 3rem;
   z-index: 2;
+  max-width: 70%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.gridItem1 { grid-area: 1 / 1 / 2 / 2; }
+.gridItem2 { grid-area: 1 / 2 / 2 / 3; }
+.gridItem3 { grid-area: 2 / 1 / 3 / 2; }
+.gridItem4 { grid-area: 2 / 2 / 3 / 3; }
+.gridItem5 { grid-area: 1 / 3 / 2 / 4; }
+.gridItem6 { grid-area: 2 / 3 / 3 / 4; }
+
+.gridItem2 {
+  width: 50%;
+}
+
+.right {
+  position: relative;
+  background-color: pink;
+  left: 0;
 }
 
 .itemTitle {
-  font-size: 1.15rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   color: white;
 }
@@ -580,10 +604,6 @@ iframe {
   font-size: 1rem;
   color: #a4a4a4;
   padding-bottom: 2px;
-}
-
-.awardItem {
-  padding-bottom: 28px;
 }
 
 .pop {
@@ -596,7 +616,15 @@ iframe {
   left: var(--padding-vert);
   font-size: 1rem;
   color: white;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  gap: 15px;
+  width: 52%;
 }
+
+.footerGrid1 { grid-area: 1 / 1 / 2 / 2; }
+.footerGrid2 { grid-area: 1 / 2 / 2 / 3; }
 
 .siteContainer {
   position: absolute;
@@ -620,39 +648,13 @@ iframe {
 }
 
 .aboutImage {
-  width: 450px;
+  width: 420px;
   height: auto;
-}
-
-.capabilitiesContainer {
-  width: 9%;
-}
-
-.awardsContainer {
-  width: 8%;
-}
-
-.creditItem {
-   max-width: 45%;
 }
 
 .email {
   color: #a4a4a4;
   font-size: 1rem;
-}
-
-.ackItem {
-   max-width: 17%;
-}
-
-.ackDevItem {
-  max-width: 20%;
-}
-
-.creditack {
-  display: flex;
-  position: relative;
-  left: 23%;
 }
 
 /* REEL SECTION */
@@ -711,33 +713,6 @@ Canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media screen and (max-width: 1600px) {
-  .aboutBlurb {
-    font-size: 1.3rem;
-  }
-
-  .itemTitle {
-    font-size: 1rem;
-  }
-
-  .itemText {
-    font-size: 0.95rem;
-  }
-
-  .itemContainer {
-    gap: 6rem;
-    left: 7%;
-  }
-
-  .aboutImage {
-    width: 250px;
-  }
-
-  .imgContainer {
-    bottom: 20%;
-  }
 }
 
 @media screen and (max-width: 700px) {
@@ -914,10 +889,10 @@ Canvas {
   }
 
   .aboutBlurb {
-    font-size: var(--mobile-paragraph);
+    font-size: 0.92rem;
     position: relative;
-    padding-top: 28%;
-    width: 63%;
+    padding-top: 23%;
+    width: 69%;
     z-index: 2;
   }
 
@@ -932,6 +907,7 @@ Canvas {
     padding-bottom: 5dvw;
     padding-left: var(--padding-vert);
     gap: 0;
+    max-width: 100%;
   }
 
   .imgContainer {
@@ -940,9 +916,19 @@ Canvas {
     height: fit-content;
   }
 
+  .awardsContainer {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .items {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .itemText {
@@ -951,27 +937,16 @@ Canvas {
   }
 
   .itemTitle {
-    font-size: 0.9rem;
+    font-size: var(--mobile-paragraph);
     margin-bottom: 6px;
   }
 
-  .contactContainer,
-  .awardsContainer {
-    padding-top: 6dvw;
+  .recTitle {
+    margin-bottom: 0;
   }
 
-  .awardsContainer {
-    width: 90%;
-  }
-
-  .awardItem {
-    padding-bottom: 15px;
-  }
-
-  .siteContainer {
-    display: flex;
-    flex-direction: column;
-    width: 55%;
+  .creditItem {
+    margin-bottom: 10px;
   }
 
   .email {
@@ -985,22 +960,10 @@ Canvas {
     position: static;
     padding-bottom: var(--padding-horiz);
     padding-left: var(--padding-vert);
-  }
-
-  .siteContainerItems {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .capabilitiesContainer {
-    width: 100%;
-  }
-
-  .creditItem {
-    max-width: 90%;
+    gap: 2px;
+    width: 56%;
   }
 
   /* REEL PAGE */
@@ -1044,102 +1007,6 @@ Canvas {
     font-size: var(--mobile-paragraph);
   }
 
-}
-
-@media screen and (min-width: 701px) and (max-width: 1900px) {
-   p {
-      font-size: 0.95rem;
-   }
-
-   /* ABOUT SECTION */
-   .email {
-      font-size: 0.95rem;
-   }
-
-   .capabilitiesContainer {
-      width: 15%;
-   }
-
-   .itemContainer {
-      left: var(--padding-vert);
-      gap: 2rem;
-   }
-
-   .awardsContainer {
-      width: 18%;
-   }
-
-   .itemContainer {
-      bottom: 8%;
-   }
-
-   .aboutBlurb {
-      width: 57%;
-      top: 15%;
-   }
-
-   .aboutBlurb p {
-      font-size: 1rem;
-   }
-
-   .credits {
-      padding-left: 0;
-   }
-
-   .awardItem {
-      padding-bottom: 15px;
-   }
-
-   .ackItem {
-      max-width: 30%;
-   }
-
-   .creditItem {
-      max-width: 70%;
-   }
-
-   .controls {
-      gap: 15px;
-   }
-
-   .itemTitle {
-      font-size: 1rem;
-      margin-bottom: 10px;
-   }
-
-   .itemText {
-      font-size: 0.95rem;
-   }
-
-   .creditack {
-    left: 18%;
-   }
-}
-
-@media screen and (min-width: 701px) and (max-width: 1490px) {
-   .itemContainer {
-      bottom: 5%;
-   }
-
-   .creditack {
-    left: 15%;
-   }
-
-   .ackItem {
-      max-width: 30%;
-   }
-
-   .creditItem {
-      max-width: 85%;
-   }
-
-   .awardsContainer {
-      width: 30%;
-   }
-
-   .aboutBlurb {
-      width: 70%;
-   }
 }
 
 /* EXTRA QUERIES FOR PROJECTS */

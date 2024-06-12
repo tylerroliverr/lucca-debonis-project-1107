@@ -31,6 +31,18 @@ export const about = {
             type: "string"
           }
         ]
+      },
+      {
+        title: "Experience",
+        name: "experience",
+        type: "array",
+        of: [
+          {
+            title: "Experience Name",
+            name: "experienceName",
+            type: "string"
+          }
+        ]
       }
     ]
   }
