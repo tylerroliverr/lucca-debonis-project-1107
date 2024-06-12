@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import TimeAndLocation from "./components/timeAndLocation";
 import "./globals.css";
 import Script from "next/script";
+import { WelcomeProvider } from "./components/3dLogoContext";
 
 export const metadata = {
   title: "1107",
@@ -14,12 +15,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Cursor/>
-        <Logos/>
-        <Navbar/>
-        {children}
-        <TimeAndLocation/>
-        <Script defer src="/cursorScript.js"/>
+        <WelcomeProvider>
+          <Cursor />
+          <Logos />
+          <Navbar />
+          {children}
+          <TimeAndLocation />
+        </WelcomeProvider>
+        <Script defer src="/cursorScript.js" />
       </body>
     </html>
   );

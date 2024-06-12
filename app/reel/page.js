@@ -1,12 +1,8 @@
 "use client";
 import { useState } from 'react';
-import getReelData from '../components/getReelData';
 import HoverLink from '../components/hoverLink';
 
-export default async function Reel() {
-
-    const reelData = getReelData();
-
+export default function Reel() {
 
     const [showVideo, setShowVideo] = useState(false);
 

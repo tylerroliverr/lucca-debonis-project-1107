@@ -14,7 +14,7 @@ async function getData() {
   try {
     const data = await client.fetch(query);
     return data.map(project => {
-      const embedUrl = project.videoUrl ? `https://player.vimeo.com/video/${project.videoUrl}` : null;
+      const embedUrl = project.videoUrl ? `https://player.vimeo.com/video/${project.videoUrl}&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&background=1` : null;
 
       let mediaType;
       let mediaPath;

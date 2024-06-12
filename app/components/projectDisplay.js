@@ -18,14 +18,10 @@ const ProjectDisplay = ({ project, isActive }) => {
 
     useEffect(() => {
         if (mediaType === 'vimeo' && videoRef.current) {
-            let updatedSrc = mediaPath;
             if (isActive) {
-                updatedSrc += '&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&background=1';
+                videoRef.current.src = mediaPath;
             } else {
-                updatedSrc = mediaPath; // Reset to original URL without autoplay
-            }
-            if (videoRef.current.src !== updatedSrc) {
-                videoRef.current.src = updatedSrc;
+                videoRef.current.src = ''; // Clear the src to stop the video
             }
         }
     }, [isActive, mediaType, mediaPath]);
@@ -42,19 +38,14 @@ const ProjectDisplay = ({ project, isActive }) => {
                     <div className="projectImageContainer">
                         {mediaType === 'vimeo' ? (
                             <div className="videoWrapper">
+                                <div className='loadingGifContainer'>
+                                    <img className='loadingGif' src='/loadingicon.gif'></img>
+                                </div>
                                 <iframe
                                     ref={videoRef}
-                                    src={mediaPath}
                                     className="projectVideo"
                                     frameBorder="0"
                                     allow="autoplay; fullscreen; picture-in-picture"
-                                ></iframe>
-                                <iframe
-                                    ref={videoRefUnder}
-                                    src={mediaPath}
-                                    className="projectVideo underVideo"
-                                    frameBorder="0"
-                                    allow="fullscreen; picture-in-picture"
                                 ></iframe>
                             </div>
                         ) : (
