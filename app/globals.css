@@ -513,6 +513,11 @@ iframe {
    overflow: hidden;
 }
 
+.underVideo {
+  position: relative;
+  z-index: -2;
+}
+
 /* ABOUT SECTION */
 .aboutContainer {
   height: 100dvh;
