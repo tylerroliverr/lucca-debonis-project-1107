@@ -930,16 +930,34 @@ Canvas {
   }
 
   .imgContainer {
-    width: 54%;
-    position: relative;
+    position: absolute;
     height: fit-content;
+    top: 35%;
+    z-index: 10;
+  }
+
+  .contactContainer,
+  .capabilitiesContainer {
+    max-width: 50%;
+  }
+
+  .contactContainer .itemText {
+    width: fit-content;
   }
 
   .awardsContainer {
-    max-width: 80%;
+    max-width: 38%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .creditContainer {
+    max-width: 40%;
+  }
+
+  .acknowledgeContainer {
+    max-width: 48%;
   }
 
   .items {

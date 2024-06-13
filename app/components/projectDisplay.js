@@ -1,6 +1,7 @@
 import React from 'react';
 import LazyImage from './LazyImage';
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 const ProjectDisplay = ({ project, isActive }) => {
     const {
@@ -11,10 +12,10 @@ const ProjectDisplay = ({ project, isActive }) => {
         projectName,
         projectYear,
         projectDetails,
+        thumbnailUrl,
     } = project;
 
     const videoRef = useRef(null);
-    const videoRefUnder = useRef(null);
 
     useEffect(() => {
         if (mediaType === 'vimeo' && videoRef.current) {
@@ -41,6 +42,7 @@ const ProjectDisplay = ({ project, isActive }) => {
                                 <div className='loadingGifContainer'>
                                     <img className='loadingGif' src='/loadingicon.gif'></img>
                                 </div>
+                                <img src={thumbnailUrl} />
                                 <iframe
                                     ref={videoRef}
                                     className="projectVideo"
@@ -51,17 +53,26 @@ const ProjectDisplay = ({ project, isActive }) => {
                         ) : (
                             <>
                                 {project.imagePathMobile && (
-                                    <LazyImage
-                                        className="projectImg projectImgMobile"
-                                        src={project.imagePathMobile}
-                                        alt="Project Mobile"
-                                    />
+                                    <Image
+                                    className='projectImg projectImgMobile'
+                                    src={project.imagePathMobile}
+                                    alt={project.projectName}
+                                    fill={true}
+                                    quality={100}
+                                />
                                 )}
                                 {project.imagePath && (
-                                    <LazyImage
-                                        className="projectImg projectImgDesktop"
+                                    // <LazyImage
+                                    //     className="projectImg projectImgDesktop"
+                                    //     src={project.imagePath}
+                                    //     alt="Project"
+                                    // />
+                                    <Image
+                                        className='projectImg projectImgDesktop'
                                         src={project.imagePath}
-                                        alt="Project"
+                                        alt={project.projectName}
+                                        fill={true}
+                                        quality={100}
                                     />
                                 )}
                             </>

@@ -58,12 +58,12 @@ export default function ImageClickMobile({ aboutData }) {
                   <p className='itemText'>1107® studio acknowledges the Traditional Custodians of the lands and waters we operate on, the Yugambeh people, and pay our respects to their Elders past, present and emerging.</p>
                </div>
             </div>
-            <div className={`imgContainer ${isExpanded ? 'fade-out' : ''}`}
+         </div>
+         <div className={`imgContainer ${isExpanded ? 'fade-out' : ''}`}
                onClick={handleToggle}
             >
                <img className='aboutImage' src="/newlucca.png" />
             </div>
-         </div>
          <div className='rightsContainer'>
             <p className='itemText'>Website Design by 1107®, <Link target="_blank" href="https://www.blueroomstudios.com.au"><span className='link'>Development by Blueroom Studios</span></Link></p>
             <p className="itemText">All Rights Reserved ©</p>
