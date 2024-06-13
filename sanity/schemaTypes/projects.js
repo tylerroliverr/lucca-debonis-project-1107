@@ -37,6 +37,11 @@ export const projects = {
         "title": "Video Url",
         "name": "videoUrl",
         "type": "string"
+      },
+      {
+        title: "Video Thumbnail",
+        name: "videoThumbnail",
+        type: "image"
       }
     ]
   }

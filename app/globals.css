@@ -524,13 +524,20 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
 }
 
 .loadingGif {
-  width: 100px;
+  width: 60px;
   height: auto;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
 }
 
 /* ABOUT SECTION */
