@@ -11,7 +11,6 @@ const ProjectDisplay = ({ project, isActive }) => {
         projectName,
         projectYear,
         projectDetails,
-        videoThumbnail
     } = project;
 
     const videoRef = useRef(null);
@@ -22,7 +21,7 @@ const ProjectDisplay = ({ project, isActive }) => {
                 videoRef.current.src = mediaPath;
             } else {
                 setTimeout(() => {
-                    videoRef.current.src = ''; // Clear the src to stop the video
+                    videoRef.current.src = ``; // Clear the src to stop the video
                 }, "600");
             }
         }
@@ -47,7 +46,7 @@ const ProjectDisplay = ({ project, isActive }) => {
                                     <img
                                         src={project.videoThumbnail}
                                         alt={project.projectName}
-                                        className='projectImg'
+                                        className='videoThumbnail'
                                     />
                                 </div>
                                 <iframe
