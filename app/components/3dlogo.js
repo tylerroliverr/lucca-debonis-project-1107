@@ -2,6 +2,7 @@ import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame, extend, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
+import Marquee from './marquee';
 
 extend({ MeshPhysicalMaterial: THREE.MeshPhysicalMaterial });
 
@@ -58,6 +59,7 @@ export default function GlassLogo() {
     }
 
   return (
+    <>
     <Canvas>
       <PerspectiveCamera
         makeDefault
@@ -69,11 +71,13 @@ export default function GlassLogo() {
       {/* <DynamicFOVCamera fovs={fovs} /> */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[2, 5, 2]} intensity={2} />
-      <Suspense fallback={null}>
+      <Suspense>
         <Model url="/glasslogo.gltf" />
         <Environment preset="dawn" />
       </Suspense>
       <OrbitControls />
     </Canvas>
+    <Marquee />
+    </>
   );
 }

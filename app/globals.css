@@ -540,6 +540,27 @@ iframe {
   mix-blend-mode: difference;
 }
 
+/* MARQUEE SECTION */
+.scroller {
+  width: 20%;
+  position: absolute;
+  bottom: var(--padding-horiz);
+  left: var(--padding-vert);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.scrollerText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  font-family: var(--basic-font);
+  width: 800px;
+}
+
 /* ABOUT SECTION */
 .aboutContainer {
   height: 100dvh;
@@ -749,6 +770,17 @@ Canvas {
   #cursor-container,
   #cursor-pointer {
     display: none;
+  }
+
+  /* MARQUEE SECTION */
+  .scroller {
+    width: 45%;
+    position: fixed;
+  }
+
+  .scrollerText {
+    font-size: var(--mobile-paragraph);
+    width: 500px;
   }
 
   /* NAV SECTION */

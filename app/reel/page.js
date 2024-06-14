@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import HoverLink from '../components/hoverLink';
+import Marquee from '../components/marquee';
 
 export default function Reel() {
 
@@ -13,6 +14,7 @@ export default function Reel() {
     return (
         <>
         <HoverLink />
+        <Marquee />
             {/* {showVideo ? (
                 <div className='projectContainer'>
                 <div className='projectImageContainer'>

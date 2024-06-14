@@ -41,7 +41,7 @@ const ProjectDisplay = ({ project, isActive }) => {
                         {mediaType === 'vimeo' ? (
                             <div className="videoWrapper">
                                 <div className='loadingGifContainer'>
-                                    <svg className='loadingGif' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200"><g><circle stroke-dasharray="146.08405839192537 50.69468613064179" r="30" stroke-width="2" stroke="#ffffff" fill="none" cy="50" cx="50">
+                                    <svg className='loadingGif' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200"><g><circle strokeDasharray="146.08405839192537 50.69468613064179" r="30" strokeWidth="2" stroke="#ffffff" fill="none" cy="50" cx="50">
                                         <animateTransform keyTimes="0;1" values="0 50 50;360 50 50" dur="2.4390243902439024s" repeatCount="indefinite" type="rotate" attributeName="transform"></animateTransform>
                                     </circle><g></g></g></svg>
                                     <img
