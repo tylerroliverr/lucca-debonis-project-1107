@@ -357,7 +357,7 @@ p {
 .nextButton {
   position: absolute;
   display: flex;
-  width: 25%;
+  width: 50%;
   height: 80%;
 }
 
@@ -709,6 +709,24 @@ iframe {
 }
 
 /* REEL SECTION */
+.reelVideoWrapper,
+iframe {
+  width: 100%;
+  height: 100%;
+  container-type: size;
+}
+
+.reelVideoWrapper > iframe {
+  position: absolute;
+  /* keep video centered both vertically and horizontally */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 83%;
+  height: 93dvh;
+}
+
 .playReel {
   display: flex;
   justify-content: center;
@@ -717,8 +735,66 @@ iframe {
   height: 100dvh;
 }
 
-.playReelMobile {
+.playReelAgain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83%;
+  height: 85dvh;
+  background-color: #a4a4a4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.playReelMobile,
+.reelMobile {
   display: none;
+}
+
+.reelrights {
+  color: black;
+}
+
+.closeReel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.reelVideoWrapper {
+  position: relative;
+  z-index: 8;
+}
+
+.overlayCursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.overlayCursor p {
+  mix-blend-mode: difference;
+}
+
+.rightsContainerMobile {
+  display: none;
+}
+
+.lowerOpacity {
+  background-color: #000;
+  width: 100%;
+  height: 100dvh;
+  opacity: 0.9;
 }
 
 /* 3D LOGO */
@@ -1059,6 +1135,14 @@ Canvas {
     display: none;
   }
 
+  .overlayCursor {
+    font-size: var(--mobile-paragraph);
+    color: white;
+    mix-blend-mode: difference;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
   .playReelMobile {
     display: flex;
     justify-content: center;
@@ -1067,6 +1151,7 @@ Canvas {
     width: 100%;
     height: 100dvh;
     gap: 4.2rem;
+    font-size: var(--mobile-paragraph);
   }
 
   .mobileExp {
@@ -1085,6 +1170,10 @@ Canvas {
     display: flex;
   }
 
+  .rightsContainer {
+    display: none;
+  }
+
   .rightsContainerMobile {
     position: fixed;
     display: flex;
@@ -1093,6 +1182,37 @@ Canvas {
     left: var(--padding-vert);
     z-index: 1000;
     font-size: var(--mobile-paragraph);
+  }
+
+  .playReelAgain {
+    height: 85dvh;
+  }
+
+  .playReelAgain p {
+    writing-mode: vertical-rl;
+text-orientation: mixed;
+  }
+
+  .closeReel {
+    bottom: 5px;
+    right: 10px;
+    top: unset;
+  }
+
+  .reelVideoWrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .reelVideoWrapper > iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vh; /* Adjust for rotated width */
+    height: 101vw; /* Adjust for rotated height */
+    transform-origin: center center; /* Center the rotation */
+    transform: translate(-50%, -50%) rotate(90deg); /* Center and rotate */
   }
 
 }

@@ -18,7 +18,7 @@ export default function Marquee() {
 
     useGSAP(() => {
         const scroller = gsap.utils.toArray('.scrollerText');
-        const loop = horizontalLoop(scroller, { repeat: -1 });
+        const loop = horizontalLoop(scroller, { repeat: -1, speed: 0.4 });
         timelineRef.current = loop;
     }, { scope: scrollerContainer });
 

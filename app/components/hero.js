@@ -9,36 +9,10 @@ import Loader from './loader';
 
 export default function Hero({ initialData }) {
     const [projects, setProjects] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(false);
     const [loadedImages, setLoadedImages] = useState(0);
     const projectsRef = useRef([]);
-    const { setIsWelcome } = useWelcome();
-
-    // useEffect(() => {
-    //     async function preloadImages() {
-    //         const promises = initialData.projects.map((project) => {
-    //             return new Promise((resolve, reject) => {
-    //                 if (project.mediaType === 'image') {
-    //                     const img = new Image();
-    //                     img.src = project.mediaPath;
-    //                     img.onload = resolve;
-    //                     img.onerror = reject;
-    //                 } else {
-    //                     resolve();
-    //                 }
-    //             });
-    //         });
-    //         try {
-    //             await Promise.all(promises);
-    //             setLoading(false);
-    //         } catch (error) {
-    //             console.error("Error preloading images:", error);
-    //         }
-    //     }
-    
-    //     preloadImages();
-    // }, [initialData]);
+    const { setIsWelcome, welcomeImageRef, setCurrentIndex, currentIndex } = useWelcome();
 
     useEffect(() => {
         if (!loading) {
@@ -46,7 +20,7 @@ export default function Hero({ initialData }) {
             const welcomeImage = {
                 type: 'welcome',
                 component: (
-                    <div className='glassContainer'>
+                    <div ref={welcomeImageRef} className='glassContainer'>
                         <div className='glassLogo'>
                             <GlassLogo />
                         </div>
@@ -59,7 +33,7 @@ export default function Hero({ initialData }) {
             shuffleArray(projectsRef.current, 1);
             setProjects(projectsRef.current);
         }
-    }, [loading, initialData]);
+    }, [loading, initialData, welcomeImageRef]);
 
     useEffect(() => {
         if (projects.length > 0 && projects[currentIndex]?.type === 'welcome') {

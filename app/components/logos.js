@@ -7,12 +7,19 @@ export default function Logos() {
 
     const pathname = usePathname();
     const wordLogo = pathname === "/about" || pathname === "/reel";
-    const { isWelcome } = useWelcome();
+    const { isWelcome, welcomeImageRef, setCurrentIndex } = useWelcome();
+
+    const handleClick = (e) => {
+        if (pathname === "/") {
+            e.preventDefault();
+            setCurrentIndex(0);
+        }
+    };
 
     return (
         <>
             <div className="logoContainer">
-                <Link href="/">
+                <Link href="/" onClick={handleClick}>
                     {isWelcome  || wordLogo ? (
                         <svg className="logo link logoWords" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 11.44">
                             <g className="logo link" fill="#fff">
