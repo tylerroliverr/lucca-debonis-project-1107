@@ -9,38 +9,30 @@ import Loader from './loader';
 
 export default function Hero({ initialData }) {
     const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [loadedImages, setLoadedImages] = useState(0);
     const projectsRef = useRef([]);
     const { setIsWelcome, welcomeImageRef, setCurrentIndex, currentIndex } = useWelcome();
 
     useEffect(() => {
-        if (!loading) {
-            // Create the welcome image component
-            const welcomeImage = {
-                type: 'welcome',
-                component: (
-                    <div ref={welcomeImageRef} className='glassContainer'>
-                        <div className='glassLogo'>
-                            <GlassLogo />
-                        </div>
+        // Create the welcome image component
+        const welcomeImage = {
+            type: 'welcome',
+            component: (
+                <div ref={welcomeImageRef} className='glassContainer'>
+                    <div className='glassLogo'>
+                        <GlassLogo />
                     </div>
-                ),
-            };
-            // Prepend "welcome" image component to the projectsRef array
-            projectsRef.current = [welcomeImage, ...initialData.projects];
-            // Shuffle the array excluding the "welcome" image component
-            shuffleArray(projectsRef.current, 1);
-            setProjects(projectsRef.current);
-        }
-    }, [loading, initialData, welcomeImageRef]);
+                </div>
+            ),
+        };
+        // Prepend "welcome" image component to the projectsRef array
+        projectsRef.current = [welcomeImage, ...initialData.projects];
+        // Shuffle the array excluding the "welcome" image component
+        shuffleArray(projectsRef.current, 1);
+        setProjects(projectsRef.current);
+    }, [initialData, welcomeImageRef]);
 
     useEffect(() => {
-        if (projects.length > 0 && projects[currentIndex]?.type === 'welcome') {
-            setIsWelcome(true);
-        } else {
-            setIsWelcome(false);
-        }
+        setIsWelcome(projects[currentIndex]?.type === 'welcome');
     }, [currentIndex, projects, setIsWelcome]);
 
     const shuffleArray = (array, startIndex = 0) => {
@@ -56,37 +48,48 @@ export default function Hero({ initialData }) {
         );
     };
 
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches;
+
     const handleNext = () => {
-        setCurrentIndex(prevIndex =>
-            prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-        );
+        if(isMobile) {
+            let nextIndex = currentIndex + 1;
+            while (nextIndex < projects.length) {
+                if (hasContent(projects[nextIndex])) {
+                    break;
+                }
+                nextIndex++;
+            }
+            setCurrentIndex(nextIndex >= projects.length ? 0 : nextIndex);
+        } else {
+            setCurrentIndex(prevIndex =>
+                prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+            );
+        }
     };
 
-    const totalAssets = initialData.projects.filter(project => project.mediaType === 'image').length;
-    const progress = Math.floor((loadedImages / totalAssets) * 100);
+    const hasContent = (project) => {
+        if (isMobile) {
+            return (
+                project.imagePath || project.imagePathMobile || project.type === 'welcome'
+            );
+        }
+    };
 
     return (
         <>
-            {loading ? (
-                <div className='loadingBar'>
-                    <div className='percentage'>{Math.round(progress)}%</div>
-                </div>
-            ) : (
-                <>
-                    <Loader />
-                    <HoverLink />
-                    <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
-                    <div className="projectsContainer">
-                        {projects.map((project, index) => (
-                            <ProjectDisplay
-                                key={index}
-                                project={project}
-                                isActive={currentIndex === index}
-                            />
-                        ))}
-                    </div>                
-                </>
-            )}
+            <Loader />
+            <HoverLink />
+            <ProjectNav handlePrev={handlePrev} handleNext={handleNext} />
+            <div className="projectsContainer">
+                {projects.map((project, index) => (
+                    <ProjectDisplay
+                        key={index}
+                        project={project}
+                        isActive={currentIndex === index}
+                        onEmpty={handleNext}
+                    />
+                ))}
+            </div>
         </>
     );
 }

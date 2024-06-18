@@ -547,6 +547,14 @@ iframe {
   mix-blend-mode: difference;
 }
 
+.desktopProjectContainer {
+  display: flex;
+}
+
+.mobileProjectContainer {
+  display: none;
+}
+
 /* MARQUEE SECTION */
 .scroller {
   width: 20%;
@@ -936,6 +944,14 @@ Canvas {
   }
 
   /* PROJECT SECTION */
+  .desktopProjectContainer {
+    display: none;
+  }
+  
+  .mobileProjectContainer {
+    display: flex;
+  }
+
   .projectDetailsContainer {
     font-size: var(--mobile-paragraph);
     display: flex;
