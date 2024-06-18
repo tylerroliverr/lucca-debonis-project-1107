@@ -2,7 +2,7 @@ import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const ProjectDisplay = ({ project, isActive, onEmpty }) => {
+const ProjectDisplay = ({ project, isActive }) => {
     const {
         type,
         component,
@@ -31,19 +31,6 @@ const ProjectDisplay = ({ project, isActive, onEmpty }) => {
     }, [isActive, mediaType, mediaPath]);
 
     const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches;
-    
-    useEffect(() => {
-        if (isMobile) {
-            const hasContent = (
-                project.imagePath || project.imagePathMobile || project.type === 'welcome'
-            );
-
-            if (!hasContent && onEmpty) {
-                console.log(`Project "${projectName}" is empty, calling onEmpty`);
-            }
-        }
-
-    }, [project, onEmpty]);
 
     if (!(imagePath || imagePathMobile || type === 'welcome') && isMobile) {
         return null;

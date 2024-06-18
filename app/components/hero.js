@@ -86,7 +86,6 @@ export default function Hero({ initialData }) {
                         key={index}
                         project={project}
                         isActive={currentIndex === index}
-                        onEmpty={handleNext}
                     />
                 ))}
             </div>
