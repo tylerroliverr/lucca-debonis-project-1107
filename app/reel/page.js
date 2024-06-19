@@ -2,15 +2,26 @@
 import { useState, useEffect, useRef } from 'react';
 import HoverLink from '../components/hoverLink';
 import Vimeo from '@vimeo/player';
+import getReelData from '../components/getReelData';
 
 export default function Reel() {
 
+    const [reelData, setReelData] = useState([]);
     const [showVideo, setShowVideo] = useState(false);
     const [showWatchAgain, setShowWatchAgain] = useState(false);
     const [isMute, setIsMute] = useState(true);
     const [isMutedText, setIsMutedText] = useState(false);
     const iframeRef = useRef(null);
     const playerRef = useRef(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getReelData();
+            setReelData(data);
+        };
+
+        fetchData();
+    }, []);
 
     const handleWatchClick = () => {
         setShowVideo(true);
@@ -75,7 +86,7 @@ export default function Reel() {
                                 <iframe
                                     ref={iframeRef}
                                     title="vimeo-player"
-                                    src="https://player.vimeo.com/video/953370934?h=478beb15a9&muted=1&loop=0&title=0&byline=0&portrait=0&controls=0"
+                                    src={`https://player.vimeo.com/video/${reelData.videoUrl}&muted=1&loop=0&title=0&byline=0&portrait=0&controls=0&quality=1080p`}
                                     frameBorder="0"
                                     allow="autoplay; fullscreen; picture-in-picture"
                                 ></iframe>
