@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const ProjectNav = ({ handlePrev, handleNext }) => {
+
+    useEffect(() => {
+        const buttonContainerLeft = document.getElementById('buttonContainerLeft');
+        const buttonContainerRight = document.getElementById('buttonContainerRight');
+        const prevButton = document.getElementById('prevButtonText');
+        const nextButton = document.getElementById('nextButtonText');
+
+        const updateButtonPosition = (button, e) => {
+            const { clientX: x, clientY: y } = e;
+            button.style.transform = `translate3d(${x - button.clientWidth / 2}px, ${y - button.clientHeight / 2}px, 0)`;
+        };
+
+        const handleButtonMouseover = (buttonContainer, button, updateHandler) => {
+            button.style.display = 'flex';
+            const handler = (e) => updateHandler(button, e);
+            document.addEventListener('mousemove', handler);
+            buttonContainer.addEventListener('mouseout', () => {
+                button.style.display = 'none';
+                document.removeEventListener('mousemove', handler);
+            }, { once: true });
+        };
+
+        buttonContainerLeft.addEventListener('mouseover', () => {
+            handleButtonMouseover(buttonContainerLeft, prevButton, updateButtonPosition);
+        });
+
+        buttonContainerRight.addEventListener('mouseover', () => {
+            handleButtonMouseover(buttonContainerRight, nextButton, updateButtonPosition);
+        });
+
+        return () => {
+            // Cleanup event listeners if component unmounts
+            buttonContainerLeft.removeEventListener('mouseover', handleButtonMouseover);
+            buttonContainerRight.removeEventListener('mouseover', handleButtonMouseover);
+        };
+    }, []);
+
     return (
         <div className="navigationButtons">
-            <div className="prevButton link navLink" onClick={handlePrev}>
+            <div id='buttonContainerLeft' className='link' onClick={handlePrev}></div>
+            <div id='buttonContainerRight' className='link' onClick={handleNext}></div>
+            <div id="prevButtonText"><p>{'<'}Prev</p></div>
+            <div id="nextButtonText"><p>Next{'>'}</p></div>
+            <div className="prevButton link navLink">
                 <div className='arrowDiv leftArrow'>
                     <svg className='leftArrowSvg' version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -22,7 +63,7 @@ l-211 217 714 715 c392 393 720 727 727 741 34 66 -12 169 -92 205 -49 22 -70
                 </div>
             </div>
             <div className='middleButton'></div>
-            <div className="nextButton link navLink" onClick={handleNext}>
+            <div className="nextButton link navLink">
                 <div className='arrowDiv rightArrow'>
                     <svg className='rightArrowSvg' version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"

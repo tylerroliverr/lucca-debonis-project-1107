@@ -42,16 +42,27 @@ export default function Hero({ initialData }) {
         }
     };
 
-    const handlePrev = () => {
-        setCurrentIndex(prevIndex =>
-            prevIndex === 0 ? projects.length - 1 : prevIndex - 1
-        );
-    };
-
     const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches;
 
-    const handleNext = () => {
+    const handlePrev = () => {
         if(isMobile) {
+            let prevIndex = currentIndex - 1;
+            while (prevIndex >= 0) {
+                if (hasContent(projects[prevIndex])) {
+                    break;
+                }
+                prevIndex--;
+            }
+            setCurrentIndex(prevIndex < 0 ? projects.length - 1 : prevIndex);
+        } else {
+            setCurrentIndex(prevIndex =>
+                prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+            );
+        }
+    };
+
+    const handleNext = () => {
+        if (isMobile) {
             let nextIndex = currentIndex + 1;
             while (nextIndex < projects.length) {
                 if (hasContent(projects[nextIndex])) {
