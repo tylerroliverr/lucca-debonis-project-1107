@@ -2,40 +2,44 @@ import React, { useEffect } from 'react';
 
 const ProjectNav = ({ handlePrev, handleNext }) => {
 
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches;
+
     useEffect(() => {
-        const buttonContainerLeft = document.getElementById('buttonContainerLeft');
-        const buttonContainerRight = document.getElementById('buttonContainerRight');
-        const prevButton = document.getElementById('prevButtonText');
-        const nextButton = document.getElementById('nextButtonText');
+        if (!isMobile) {
+            const buttonContainerLeft = document.getElementById('buttonContainerLeft');
+            const buttonContainerRight = document.getElementById('buttonContainerRight');
+            const prevButton = document.getElementById('prevButtonText');
+            const nextButton = document.getElementById('nextButtonText');
 
-        const updateButtonPosition = (button, e) => {
-            const { clientX: x, clientY: y } = e;
-            button.style.transform = `translate3d(${x - button.clientWidth / 2}px, ${y - button.clientHeight / 2}px, 0)`;
-        };
+            const updateButtonPosition = (button, e) => {
+                const { clientX: x, clientY: y } = e;
+                button.style.transform = `translate3d(${x - button.clientWidth / 2}px, ${y - button.clientHeight / 2}px, 0)`;
+            };
 
-        const handleButtonMouseover = (buttonContainer, button, updateHandler) => {
-            button.style.display = 'flex';
-            const handler = (e) => updateHandler(button, e);
-            document.addEventListener('mousemove', handler);
-            buttonContainer.addEventListener('mouseout', () => {
-                button.style.display = 'none';
-                document.removeEventListener('mousemove', handler);
-            }, { once: true });
-        };
+            const handleButtonMouseover = (buttonContainer, button, updateHandler) => {
+                button.style.display = 'flex';
+                const handler = (e) => updateHandler(button, e);
+                document.addEventListener('mousemove', handler);
+                buttonContainer.addEventListener('mouseout', () => {
+                    button.style.display = 'none';
+                    document.removeEventListener('mousemove', handler);
+                }, { once: true });
+            };
 
-        buttonContainerLeft.addEventListener('mouseover', () => {
-            handleButtonMouseover(buttonContainerLeft, prevButton, updateButtonPosition);
-        });
+            buttonContainerLeft.addEventListener('mouseover', () => {
+                handleButtonMouseover(buttonContainerLeft, prevButton, updateButtonPosition);
+            });
 
-        buttonContainerRight.addEventListener('mouseover', () => {
-            handleButtonMouseover(buttonContainerRight, nextButton, updateButtonPosition);
-        });
+            buttonContainerRight.addEventListener('mouseover', () => {
+                handleButtonMouseover(buttonContainerRight, nextButton, updateButtonPosition);
+            });
 
-        return () => {
-            // Cleanup event listeners if component unmounts
-            buttonContainerLeft.removeEventListener('mouseover', handleButtonMouseover);
-            buttonContainerRight.removeEventListener('mouseover', handleButtonMouseover);
-        };
+            return () => {
+                // Cleanup event listeners if component unmounts
+                buttonContainerLeft.removeEventListener('mouseover', handleButtonMouseover);
+                buttonContainerRight.removeEventListener('mouseover', handleButtonMouseover);
+            };
+        }
     }, []);
 
     return (
