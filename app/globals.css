@@ -375,22 +375,21 @@ p {
   z-index: 19;
 }
 
-#buttonContainerLeft {
+#buttonContainerLeft,
+#buttonContainerRight {
   position: fixed;
-  left: 0;
   top: 10%;
   z-index: 21;
   width: 50%;
   height: 80%;
 }
 
+#buttonContainerLeft {
+  left: 0;
+}
+
 #buttonContainerRight {
-  position: fixed;
   right: 0;
-  top: 10%;
-  z-index: 21;
-  width: 50%;
-  height: 80%;
 }
 
 #prevButtonText,
@@ -848,7 +847,7 @@ iframe {
 
 Canvas {
   position: relative;
-  z-index: 20;
+  z-index: 21;
 }
 
 /* LOADING BAR SECTION */
