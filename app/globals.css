@@ -1219,10 +1219,6 @@ Canvas {
     display: flex;
   }
 
-  .rightsContainer {
-    display: none;
-  }
-
   .rightsContainerMobile {
     position: fixed;
     display: flex;
