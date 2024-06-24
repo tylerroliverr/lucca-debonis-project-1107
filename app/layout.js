@@ -11,6 +11,8 @@ export const metadata = {
   description: "Lucca DeBonis Portfolio",
 };
 
+export const revalidate = 600;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
